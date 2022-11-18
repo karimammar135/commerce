@@ -1,7 +1,11 @@
-{% extends "auctions/layout.html" %}
+{% extends "auctions/wave.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'auctions/media/cart.png' %}" rel="icon">
+{% endblock %}
 
 {% block body %}
-    <h2>Active Listings</h2>
-
-    TODO
+    
 {% endblock %}
