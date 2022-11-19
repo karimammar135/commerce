@@ -3,9 +3,22 @@
 {% load static %}
 
 {% block head %}
+    <link href="{% static 'auctions/index.css' %}" rel="stylesheet">
     <link href="{% static 'auctions/media/cart.png' %}" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endblock %}
 
 {% block body %}
-    
+
+    <!-- navbar -->
+    <div class="nav_bar">
+        <!-- logo -->
+        <div class="logo">
+            <img src="{% static 'auctions/media/shopping-icon.png' %}" rel="icon" id="cart_icon">
+            <span class="line"></span>
+            <span id="shopey">Shopey</span>
+        </div>
+
+    </div>
+
 {% endblock %}
