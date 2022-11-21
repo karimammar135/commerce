@@ -28,15 +28,15 @@
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_2" href="{% url 'logout' %}">Whatchlist</a>
+                    <a class="nav-link i_2" href="#">Whatchlist</a>
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_3" href="{% url 'logout' %}">Create Listing</a>
+                    <a class="nav-link i_3" href="#">Create Listing</a>
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_2" href="{% url 'logout' %}">Contact us</a>
+                    <a class="nav-link i_2" href="#">Contact us</a>
                     <span class="underline"></span>
                 </li>
             {% else %}
@@ -50,19 +50,37 @@
                 </li>
             {% endif %} 
             <li>
-                <!-- dropdown menu -->
+                {% if user.is_authenticated %}
+                <!-- dropdown menu if loged in -->
                 <div class="dropdown">
                     <i class="fa-solid fa-list-ul dropbtn"></i>
                     <div class="dropdown-content">
-                        <a href="#">Log out</a>
+                        <a href="{% url 'logout' %}">Log out</a>
                         <a href="#">Whatchlist</a>
                         <a href="#">Create Listing</a>
                         <a href="#">Contact us</a>
                     </div>
                 </div>
+
+                {% else %}
+                <!-- dropdown menu if loged out -->
+                <div class="dropdown">
+                    <i class="fa-solid fa-list-ul dropbtn"></i>
+                    <div class="dropdown-content">
+                        <a href="{% url 'login' %}">Log in</a>
+                        <a href="{% url 'register' %}">Register</a>
+                    </div>
+                </div>
+                {% endif %}
             </li>           
         </ul>
         
     </div>
     
+    <!-- e-commerce welcoming sentence -->
+    <div class="welcoming-text">
+        <a href="#"><span class="white-text">E-COMMERCE SHOPING ONLINE AT</span>
+        <span class="red-text">SHOPEY</span></a>
+    </div>
+
 {% endblock %}

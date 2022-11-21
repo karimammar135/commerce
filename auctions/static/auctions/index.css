@@ -5,6 +5,7 @@
   top: 0;
   margin-top: 0.2rem;
   width: 100vw;
+  min-width: 270px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -168,5 +169,62 @@
 
 .i_4:hover ~ .underline {
   width: 5%;
+}
+
+/* welcoming text */
+.welcoming-text {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+}
+
+.welcoming-text a {
+  text-decoration: none;
+}
+
+.welcoming-text .white-text {
+  color: white;
+}
+
+.welcoming-text .red-text {
+  color: #C92D2D;
+}
+
+@media (max-width: 1150px) and (min-width: 875px) {
+  .welcoming-text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 874px) and (min-width: 445px) {
+  .welcoming-text {
+    font-size: 1.7rem;
+    margin: 0 1rem 0 1rem;
+  }
+}
+
+@media (max-width: 444px) and (min-width: 321px) {
+  .welcoming-text {
+    font-size: 1.3rem;
+    margin: 0 1rem 0 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .welcoming-text {
+    font-size: 1rem;
+    margin: 0 1rem 0 1rem;
+  }
+  .logo #cart_icon {
+    width: 40px;
+  }
+  .logo .line {
+    height: 1.2rem;
+  }
+  .logo #shopey {
+    font-size: 30px;
+  }
+  .dropbtn {
+    font-size: 1.5rem;
+  }
 }
 /*# sourceMappingURL=index.css.map */
