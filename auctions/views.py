@@ -6,7 +6,6 @@ from django.urls import reverse
 
 from .models import User
 
-
 def index(request):
     return render(request, "auctions/index.html")
 
