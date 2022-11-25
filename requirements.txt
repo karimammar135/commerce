@@ -102,7 +102,6 @@ tqdm==4.64.1
 traceback2==1.4.0
 traitlets==5.5.0
 Twisted==18.9.0
-ufw==0.36
 unattended-upgrades==0.1
 unittest2==1.1.0
 urllib3==1.25.8
