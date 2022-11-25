@@ -69,7 +69,7 @@ PyRect==0.2.0
 pyrsistent==0.15.5
 PyScreeze==0.1.28
 pyserial==3.4
-python-apt==2.0.0+ubuntu0.20.4.8
+python-apt==2.0.0
 python-debian===0.1.36ubuntu1
 python-decouple==3.6
 python3-xlib==0.15
