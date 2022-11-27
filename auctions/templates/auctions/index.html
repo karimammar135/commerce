@@ -49,14 +49,14 @@
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_1" href="{% url 'register' %}">Register</a>
+                    <a class="nav-link i_5" href="{% url 'register' %}">Register</a>
                     <span class="underline"></span>
                 </li>
             {% endif %} 
             <li>
                 {% if user.is_authenticated %}
                 <!-- dropdown menu if loged in -->
-                <div class="dropdown">
+                <div class="dropdown" tabindex="0">
                     <i class="fa-solid fa-list-ul dropbtn"></i>
                     <div class="dropdown-content">
                         <a href="{% url 'logout' %}">Log out</a>
@@ -89,7 +89,7 @@
             <a href="#"><span class="white-text">E-COMMERCE ONLINE SHOPING AT</span>
             <span class="red-text">SHOPEY</span></a>
         </div>
-        
+
         <!-- lorem paragraph -->
         <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi.</p>
