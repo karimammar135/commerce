@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
 
 .nav_bar{
     position: absolute;
@@ -250,12 +251,51 @@ i:checked {
         }
     }
 }
+/* end of midle content buttons */
 
 /* featured listings */
 .featured-listings{
     height: 50vh;
     width: 100%;
 }
+.fetured-listing-sentence {
+    margin: 3rem 0 3rem 3rem;
+    display: flex;
+    align-items: center;
+    img{
+        height: 40px;
+    }
+    span{
+        font-size: 40px;
+        font-style: normal;
+        font-family: 'Lora', serif;
+        color: #000000;
+        line-height: 51px;
+        margin-left: 4.5px;
+        margin-top: 0.5px;
+    }
+    @media (max-width: 475px){
+        img{
+            height: 30px;
+        }
+        span{
+            font-size: 30px;
+        }
+    }
+    @media (max-width: 375px){
+        margin: 3rem 0 3rem 1rem;
+    }
+    @media (max-width: 310px){
+        img{
+            height: 25px;
+        }
+        span{
+            font-size: 25px;
+        }
+    }
+}
+
+/* end of featured listings */
 
 /* footer of the website */
 .footer{
@@ -415,3 +455,5 @@ i:checked {
         }
     }
 }
+/* end of the footer of the website */
+

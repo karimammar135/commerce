@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap");
 .nav_bar {
   position: absolute;
   top: 0;
@@ -297,12 +298,62 @@ i:checked .dropbtn {
   }
 }
 
+/* end of midle content buttons */
 /* featured listings */
 .featured-listings {
   height: 50vh;
   width: 100%;
 }
 
+.fetured-listing-sentence {
+  margin: 3rem 0 3rem 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fetured-listing-sentence img {
+  height: 40px;
+}
+
+.fetured-listing-sentence span {
+  font-size: 40px;
+  font-style: normal;
+  font-family: 'Lora', serif;
+  color: #000000;
+  line-height: 51px;
+  margin-left: 4.5px;
+  margin-top: 0.5px;
+}
+
+@media (max-width: 475px) {
+  .fetured-listing-sentence img {
+    height: 30px;
+  }
+  .fetured-listing-sentence span {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .fetured-listing-sentence {
+    margin: 3rem 0 3rem 1rem;
+  }
+}
+
+@media (max-width: 310px) {
+  .fetured-listing-sentence img {
+    height: 25px;
+  }
+  .fetured-listing-sentence span {
+    font-size: 25px;
+  }
+}
+
+/* end of featured listings */
 /* footer of the website */
 .footer {
   height: 455px;
@@ -502,4 +553,6 @@ i:checked .dropbtn {
     margin-right: 0.2rem;
   }
 }
+
+/* end of the footer of the website */
 /*# sourceMappingURL=index.css.map */
