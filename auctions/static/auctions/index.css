@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Livvic:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300&display=swap");
 .nav_bar {
   position: absolute;
   top: 0;
@@ -125,6 +128,20 @@
 
 .dropdown-content a:hover {
   background-color: #C92D2D;
+}
+
+.dropdown:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  color: #C92D2D;
 }
 
 .dropdown:focus {
@@ -332,7 +349,16 @@ i:checked .dropbtn {
   margin-top: 0.5px;
 }
 
-@media (max-width: 475px) {
+@media (max-width: 888px) and (min-width: 485px) {
+  .fetured-listing-sentence {
+    margin-left: 1.3rem;
+  }
+}
+
+@media (max-width: 484px) {
+  .fetured-listing-sentence {
+    margin-left: 1.3rem;
+  }
   .fetured-listing-sentence img {
     height: 30px;
   }
@@ -363,10 +389,15 @@ i:checked .dropbtn {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-left: 22px;
 }
 
 .listing-item {
+  text-decoration: none;
+  -webkit-transition: -webkit-transform 1s, -webkit-box-shadow 1s;
+  transition: -webkit-transform 1s, -webkit-box-shadow 1s;
+  transition: transform 1s, box-shadow 1s;
+  transition: transform 1s, box-shadow 1s, -webkit-transform 1s, -webkit-box-shadow 1s;
+  cursor: pointer;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -376,6 +407,128 @@ i:checked .dropbtn {
   margin-bottom: 40px;
   margin-left: 22px;
   margin-right: 22px;
+  /* design of the item */
+  border-radius: 10px 10px 10px 10px;
+  -webkit-filter: drop-shadow(3.5px 3.5px 4px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(3.5px 3.5px 4px rgba(0, 0, 0, 0.3));
+  /* pic */
+  /* title */
+  /* description */
+  /* item footer */
+  /* end of design section*/
+}
+
+@media (min-width: 628px) {
+  .listing-item {
+    min-width: 400px;
+  }
+}
+
+.listing-item .pic {
+  width: 100%;
+  height: 12.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.listing-item .pic1 {
+  background-image: url("media/g-class-car.jpeg");
+}
+
+.listing-item .pic2 {
+  background-image: url("media/TV.png");
+  background-color: white;
+}
+
+.listing-item .pic3 {
+  background-image: url("media/watch.jpg");
+}
+
+.listing-item .pic4 {
+  background-image: url("media/bedside-lamp.jpg");
+}
+
+.listing-item .title {
+  position: absolute;
+  top: 205px;
+  left: 15px;
+  color: #000000;
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-size: 25px;
+}
+
+.listing-item .description {
+  position: absolute;
+  top: 260px;
+  left: 15px;
+  font-family: 'Livvic', sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
+}
+
+.listing-item .item-footer {
+  position: absolute;
+  bottom: 0px;
+  background-color: #282828;
+  width: 100%;
+  height: 61px;
+  border-radius: 0 0 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.listing-item .item-footer .price {
+  color: #FFFFFF;
+  font-size: 25px;
+  margin-left: 15px;
+  margin-bottom: 2px;
+  line-height: 32px;
+  font-family: 'Noto Serif Khmer', serif;
+}
+
+.listing-item .item-footer .bids {
+  color: #FFFFFF;
+  font-size: 18.7598px;
+  margin-right: 15px;
+  line-height: 26px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.listing-item:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-box-shadow: rgba(56, 56, 56, 0.4) 0px 5px, rgba(51, 49, 50, 0.3) 0px 10px, rgba(51, 46, 49, 0.2) 0px 15px, rgba(53, 44, 50, 0.1) 0px 20px, rgba(97, 82, 91, 0.05) 0px 25px;
+          box-shadow: rgba(56, 56, 56, 0.4) 0px 5px, rgba(51, 49, 50, 0.3) 0px 10px, rgba(51, 46, 49, 0.2) 0px 15px, rgba(53, 44, 50, 0.1) 0px 20px, rgba(97, 82, 91, 0.05) 0px 25px;
+}
+
+@media (min-width: 888px) {
+  .listing-item {
+    margin-right: 16px;
+  }
+  .listings-container {
+    margin-left: 22px;
+  }
+}
+
+@media (max-width: 313px) {
+  .listing-item {
+    min-width: 200px;
+  }
+  .listings-container {
+    margin-left: 0px;
+  }
 }
 
 /* hiden anchors */
@@ -383,10 +536,30 @@ i:checked .dropbtn {
   display: none;
 }
 
-@media (max-width: 1696px) and (min-width: 1280px) {
+@media (max-width: 1773px) and (min-width: 1336px) {
   .hiden {
     display: block;
-    background-color: white;
+    background-color: transparent;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    min-width: 270px;
+    height: 25rem;
+    margin-bottom: 40px;
+    margin-left: 22px;
+    margin-right: 22px;
+  }
+}
+
+@media (max-width: 1773px) and (min-width: 1336px) and (min-width: 628px) {
+  .hiden {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 1773px) and (min-width: 1336px) and (min-width: 888px) {
+  .hiden {
+    margin-right: 16px;
   }
 }
 
