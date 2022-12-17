@@ -324,7 +324,7 @@ i:checked {
 
 .listing-item {
     text-decoration: none;
-    transition: transform 1s, box-shadow 1s;
+    transition: transform 0.6s, box-shadow 1s;
     cursor: pointer;
     flex-grow: 1;
     min-width: 270px;
@@ -461,6 +461,46 @@ i:checked {
         }
     }
 }
+
+/* explore all active listings button */
+.explore_listings_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3.2rem 0 5.8rem 0;
+
+    .explore_listings_btn {
+        background-color: transparent;
+        color:#C92D2D;
+        border: solid 1.3px #C92D2D;
+        text-decoration: none;
+        padding: 1rem 2rem 1rem 2rem;
+        font-size: 18.75px;
+        letter-spacing: 1.08px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        line-height: 22px;
+        transition: background-color 1s, color 1s;
+        text-align: center;
+        @media (max-width: 375px) {
+            width: 260px;
+            padding: 1rem 1rem 1rem 1rem;
+            font-size: 15px;
+        }
+        @media (max-width: 300px) {
+            width: 240px;
+            padding: 1rem 0rem 1rem 0rem;
+            font-size: 15px;
+        }
+    }
+
+    .explore_listings_btn:hover {
+        background-color: #C92D2D;
+        color: white;
+    }
+}
+
+
 /* end of featured listings */
 
 /* footer of the website */
