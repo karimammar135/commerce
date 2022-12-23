@@ -325,8 +325,8 @@ i:checked {
 .listing-item {
     text-decoration: none;
     transition: transform 0.6s, box-shadow 1s;
-    cursor: pointer;
     flex-grow: 1;
+    flex-basis: 270px;
     min-width: 270px;
     height: 25rem;
     background-color: #D9D9D9;
@@ -363,32 +363,54 @@ i:checked {
         background-image: url("media/bedside-lamp.jpg");
     }
 
-    /* title */
-    .title {
-        position: absolute;
-        top: 205px;
-        left: 15px;
-        color: #000000;
-        font-family: 'Lora', serif;
-        font-style: normal;
-        font-size: 25px;
-    }
+    /* item container */
+    .item-container{
+        position: relative;
+        bottom: 0px;
+        width: 90%;
+        height: 130px;
+        margin-top: 9px;
+        margin-left: 15px;
+        
+        /* title */
+        .title {
+            color: #000000;
+            font-family: 'Lora', serif;
+            font-style: normal;
+            font-size: 25px;
+            width: 100%;
+        }
 
-    /* description */
-    .description {
-        position: absolute;
-        top: 260px;
-        left: 15px;
-        font-family: 'Livvic', sans-serif;
-        font-style: normal;
-        font-size: 20px;
-        line-height: 25px;
-        color: #000000;
+        /* description */
+        .description {
+            font-family: 'Livvic', sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            line-height: 25px;
+            color: #000000;
+            display: block;
+            overflow: hidden; /* important */
+            text-overflow: ellipsis;
+            display: -webkit-box; 
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-height: 70px;
+            width: 100%;
+        }
+
+        .centering {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            max-height: 70px;
+            width: 100%;
+        }
     }
 
     /* item footer */
     .item-footer {
-        position: absolute;
+        position: relative;
         bottom: 0px;
         background-color: #282828;
         width: 100%;
@@ -448,6 +470,7 @@ i:checked {
         display: block;
         background-color: transparent;
         flex-grow: 1;
+        flex-basis: 270px;
         min-width: 270px;
         height: 25rem;
         margin-bottom: 40px;
