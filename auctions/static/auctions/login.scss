@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    width: 350px;
+    height: 430px;
+    margin-top: 60px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+    /* profile icon */
+    .profile-icon {
+        margin-top: 40px;
+        height: 48px;
+        img {
+            margin-right: 6.5px;
+            width: 50px;
+        }
+    }
+
+    /* login greeting */
+    .greeting {
+        color: black;
+        font-size: 36px;
+        font-family: 'Righteous', cursive;
+        font-weight: 300;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    /* input field */
+    .input {
+        width: 235px;
+        border: 1px solid #17CD8C;
+        border-radius: 5px;
+        padding: 10px 0px 10px 10px;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* sentence */
+    .sentence {
+        span {
+            color: black;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+        a {
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+        margin-bottom: 20px;
+    }
+
+    /* button */
+    .button {
+        border: 1px solid #000000;
+        border-radius: 5px;
+        color: black;
+        background-color: transparent;
+        width: 117px;
+        height: 42px;
+        margin-bottom: 15px;
+        transition: background-color 1s, color 1s;
+
+        font-size: 18px;
+        line-height: 22px;
+        font-family: 'Red Rose', cursive;
+        font-weight: 500;
+    }
+
+    .button:hover {
+        background-color: #000000;
+        color: white;
+    }
+}
+
+@media (max-height: 680px){
+    .container {
+        margin-top: 40px;
+    }
+}
