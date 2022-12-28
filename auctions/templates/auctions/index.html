@@ -9,6 +9,28 @@
 
     <link href="{% static 'auctions/index.css' %}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a122ebbd90.js" crossorigin="anonymous"></script>
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -54,9 +76,9 @@
             <li>
                 {% if user.is_authenticated %}
                 <!-- dropdown menu if loged in -->
-                <div class="dropdown" tabindex="0">
-                    <i class="fa-solid fa-list-ul dropbtn"></i>
-                    <div class="dropdown-content">
+                <div class="dropdown">
+                    <i onclick="myFunction()" class="fa-solid fa-list-ul dropbtn"></i>
+                    <div id="myDropdown" class="dropdown-content">
                         <a href="{% url 'logout' %}">Log out</a>
                         <a href="#">Whatchlist</a>
                         <a href="#">Create Listing</a>
@@ -68,9 +90,9 @@
 
                 {% else %}
                 <!-- dropdown menu if loged out -->
-                <div class="dropdown" tabindex="0">
-                    <i class="fa-solid fa-list-ul dropbtn"></i>
-                    <div class="dropdown-content">
+                <div class="dropdown">
+                    <i onclick="myFunction()" class="fa-solid fa-list-ul dropbtn"></i>
+                    <div id="myDropdown" class="dropdown-content">
                         <a href="{% url 'login' %}">Log in</a>
                         <a href="{% url 'register' %}">Register</a>
                     </div>

@@ -101,6 +101,11 @@
           transform: rotate(180deg);
 }
 
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  color: #C92D2D;
+}
+
 .dropdown {
   margin-right: 2vw;
   margin-top: 0.1rem;
@@ -130,46 +135,9 @@
   background-color: #C92D2D;
 }
 
-.dropdown:hover {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-.dropdown:hover .dropdown-content {
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
   display: block;
-}
-
-.dropdown:hover .dropbtn {
-  color: #C92D2D;
-}
-
-.dropdown:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-.dropdown:focus .dropdown-content {
-  display: block;
-}
-
-.dropdown:focus .dropbtn {
-  color: #C92D2D;
-}
-
-i:checked {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-i:checked .dropdown-content {
-  display: none;
-}
-
-i:checked .dropbtn {
-  color: white;
 }
 
 @media (max-width: 900px) {

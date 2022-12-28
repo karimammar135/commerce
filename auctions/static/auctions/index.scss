@@ -83,6 +83,11 @@
     transform: rotate(180deg);
 }
 
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    color:#C92D2D;
+}
+
 .dropdown {
     margin-right: 2vw;
     margin-top: 0.1rem;
@@ -109,37 +114,8 @@
   
 .dropdown-content a:hover {background-color: #C92D2D}
 
-.dropdown:hover {
-    box-shadow: none;
-    outline: none;
-    .dropdown-content {
-        display: block;
-    }
-    .dropbtn {
-        color: #C92D2D;
-    }
-}
-
-.dropdown:focus {
-    box-shadow: none;
-    outline: none;
-    .dropdown-content {
-        display: block;
-    }
-    .dropbtn {
-        color: #C92D2D;
-    }
-}
-i:checked {
-    box-shadow: none;
-    outline: none;
-    .dropdown-content {
-        display: none;
-    }
-    .dropbtn {
-        color: white;
-    }
-}
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 
 @media (max-width: 900px) {
     .nav-item {
