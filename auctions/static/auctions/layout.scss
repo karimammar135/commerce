@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300&display=swap');
+
+.nav_bar{
+    height: 70px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('media/default-background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* logo */
+#cart_icon{
+    width: 55px;
+    margin-bottom: 5px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    margin-left: 3vw;
+}
+
+.line{
+    margin-left: 0.3rem;
+    height: 30px;
+    border: 1px solid black;
+}
+#shopey{
+    margin-left: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    line-height: 50px;
+    color: #C92D2D;
+}   
+/* logo */
+
+/* nav options */
+.nav_options{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin-top: 1rem;
+}
+.nav-link{
+    color: white;
+    text-decoration: none;
+    margin-right: 3vw;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+}
+.nav-link:hover{
+    color: #C92D2D;
+}
+.nav-link::after {
+    content: none;
+    width: 100%;
+    height: 20px;
+    background-color: white;
+    position: relative;
+}
+
+/* dropdown */
+.dropbtn {
+    color: white;
+    font-size: 2.1rem;
+    border: none;
+    cursor: pointer;
+    transform: rotate(180deg);
+    @media (max-width: 320px) {
+        font-size: 1.8rem;
+    }
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    color:#C92D2D;
+}
+
+.dropdown {
+    margin-right: 2vw;
+    margin-top: 0.1rem;
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {background-color: #C92D2D}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+@media (max-width: 900px) {
+    .nav-item {
+        display: none;
+    }
+}
+
+/* underline effect for options in navbar */
+.underline {
+    display: block;
+    background-color: #C92D2D;
+    position: absolute;
+    height: 3px;
+    width: 0%;
+    bottom: 10px;
+    transition: all 0.4s ease;
+}
+
+.i_2:hover ~ .underline {
+    width: 103px;
+}
+  
+.i_1:hover ~ .underline {
+    width: 70px;
+}
+  
+.i_3:hover ~ .underline {
+    width: 135px;
+}
+  
+.i_4:hover ~ .underline {
+    width: 56px;
+}

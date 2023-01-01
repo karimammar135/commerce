@@ -59,3 +59,13 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+# create a new listing 
+def create_listing(request):
+    # if post request
+    if request.method == "POST":
+        return print("done")
+
+    # if get request
+    else:
+        return render(request, "auctions/create_listing.html")
