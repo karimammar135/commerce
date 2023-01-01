@@ -88,12 +88,53 @@
         </div>
         <!-- end of navbar -->
 
-        <!-- confirming for no errors -->
-        {% if user.is_authenticated %}
-            {% block body %}
-            {% endblock %}
-        {% else %}
-            <h1>Error</h1>
-        {% endif %}
+        {% block middle-content %}
+            <div style="height: 500px;"></div>
+        {% endblock %}
+
+        <!-- website footer -->
+        <div class="footer">
+            <!-- logo -->
+            <div class="logo-footer">
+                <img src="{% static 'auctions/media/shopping-icon.png' %}" rel="icon" id="cart_icon2">
+                <span class="line2"></span>
+                <span id="shopey2" style="color: white;">Shopey</span>
+            </div>
+    
+            <!-- links -->
+            <div class="links">
+                <div class="links-1">
+                    <a href="#">Home</a>
+                    <a href="#">Active Listings</a>
+                    <a href="#" class="c-a-n-l">Create a new Listing</a>
+                    <a href="#">Report a bug</a>
+                    <a href="#">WachList</a>
+                </div>
+                <span class="line footer-line"></span>
+                <div class="links-2">
+                    <a href="#">Log In</a>
+                    <a href="#">Register</a>
+                    <a href="#">Terms of service</a>
+                    <a href="#">Discover Categories</a>
+                    <a href="#">Contact us</a>
+                </div>
+            </div>
+    
+            <!-- designed by -->
+            <span class="designed-by">This website is designed and developed by Karim Ammar</span>
+            
+            <!-- email -->
+            <span class="email">Email: mk739@gmail.com</span>
+    
+            <!-- phone number -->
+            <div class="phone-number">
+                <span style="color: white; font-family: 'Inter', sans-serif;">Number:</span>
+                <a href="#">+96171458946</a>
+                <span style="color: white; font-family: 'Inter', sans-serif;">(Whatsapp)</span>
+            </div>
+            
+        </div>
+        <!-- end of website footer -->
+
     </body>
 </html>
