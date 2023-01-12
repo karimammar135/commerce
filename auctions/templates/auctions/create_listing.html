@@ -1,1 +1,93 @@
 {% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'auctions/create_listing.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block middle-content %}
+
+    <!-- create listing form container -->
+    <div class="container">
+        <!-- greeting -->
+        <span class="greeting">Create a New Listing</span>
+
+        <!-- stepper -->
+        <div class="stepper">
+
+            <!-- step-indicator -->
+            <div class="step-indicator">
+                <span class="blue">Step 1 </span><span class="gray">of 1</span>
+            </div>
+            <!-- blue bar -->
+            <div class="bar"></div>
+            
+        </div>
+
+        <!-- form -->
+        <form action="{% url 'create_listing' %}" method="post">
+            <!-- csrf token -->
+            {% csrf_token %}
+
+            <!-- top -->
+            <div class="top_group">
+                <!-- left side input fields -->
+                <div class="left_group">
+                    <!-- title input field -->
+                    <div class="title">
+                        <label>Title</label>
+                        <input name="title" placeholder="Enter a Title" type="text" autocomplete="off" required>
+                    </div>
+                    
+                    <!-- title input field -->
+                    <div class="image_url">
+                        <label>Image url (optional)</label>
+                        <input name="image_url" placeholder="Enter image url" type="url" autocomplete="off">
+                    </div>
+                </div>
+                
+                <!-- right side input field -->
+                <div class="right_group">
+                    <!-- starting bid input -->
+                    <div class="starting_bid">
+                        <label>Starting bid</label>
+                        <input name="starting_bid" placeholder="Enter a starting bid" autocomplete="off" type="float" autocomplete="none" required>
+                    </div>
+
+                    <!-- category input -->
+                    <div class="category">
+                        <label for="category">Category (optional)</label>
+                        <select name="category">
+                            <option class="selected" selected>Select</option>
+                            <option value="Technology">Technology</option> 
+                            <option value="Education">Education</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Toys">Toys</option>
+                            <option value="Home">Home</option>
+                        </select>
+                    </div>
+                    
+
+                </div>
+            </div>
+            <!-- end of top group -->
+            
+            <!-- textarea for the description -->
+            <div class="description">
+                <!-- label -->
+                <label for="description">Text Based Description</label>
+
+                <!-- textarea for taking input -->
+                <textarea id="description" name="description" rows="4" cols="50" maxlength="200" placeholder="Enter Details..." required></textarea>
+
+            </div>
+            <!-- end of textarea -->
+            
+
+            <!-- submit button -->
+                <button type="submit" class="submit">Create Listing</button>
+            </form>
+    </div>
+
+{% endblock %}

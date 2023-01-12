@@ -39,6 +39,8 @@
               }
             }
         </script>
+
+        {% block head %}{% endblock %}
     </head>
     <body>
 
@@ -58,7 +60,7 @@
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_2" href="#">Whatchlist</a>
+                    <a class="nav-link i_2">Whatchlist</a>
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
@@ -66,7 +68,7 @@
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_2" href="#">Contact us</a>
+                    <a class="nav-link i_2">Contact us</a>
                     <span class="underline"></span>
                 </li>
                 <li>
@@ -75,6 +77,7 @@
                         <i onclick="myFunction()" class="fa-solid fa-list-ul dropbtn"></i>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="{% url 'logout' %}">Log out</a>
+                            <a href="/#">Home</a>
                             <a href="#">Whatchlist</a>
                             <a href="{% url 'create_listing' %}">Create Listing</a>
                             <a href="#">Contact us</a>
@@ -88,10 +91,11 @@
         </div>
         <!-- end of navbar -->
 
-        {% block middle-content %}
-            <div style="height: 500px;"></div>
-        {% endblock %}
-
+        <div style="margin: 0px 10px 0px 10px;">
+            {% block middle-content %}
+            {% endblock %}
+        </div>
+        
         <!-- website footer -->
         <div class="footer">
             <!-- logo -->
@@ -104,7 +108,7 @@
             <!-- links -->
             <div class="links">
                 <div class="links-1">
-                    <a href="#">Home</a>
+                    <a href="/#">Home</a>
                     <a href="#">Active Listings</a>
                     <a href="#" class="c-a-n-l">Create a new Listing</a>
                     <a href="#">Report a bug</a>

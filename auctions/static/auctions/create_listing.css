@@ -1,0 +1,463 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+/* container of the create new listing form */
+.container {
+  margin-top: 107px;
+  margin-bottom: 37px;
+  min-height: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid #DDE2E6;
+  border-radius: 20px;
+  max-width: 925px;
+  gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 37px 43px;
+  /* phone screen */
+  /* create new lisitng greeting */
+  /* stepper */
+  /* form */
+}
+@media (max-width: 430px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 370px) {
+  .container {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+.container .greeting {
+  height: 30px;
+  font-size: 24px;
+  color: #2B2F32;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* very small screen*/
+}
+@media (max-width: 315px) {
+  .container .greeting {
+    font-size: 21px;
+  }
+}
+.container .stepper {
+  width: 100%;
+  height: 45px;
+  gap: 13px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  /* steps indictor */
+  /* bar */
+  /* stepper animation */
+}
+.container .stepper .step-indicator {
+  align-self: flex-end;
+  /* blue span */
+  /* span animation */
+  /* gray span */
+}
+.container .stepper .step-indicator span {
+  text-align: right;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+.container .stepper .step-indicator .blue {
+  color: #5570F1;
+  -webkit-animation-name: stepper;
+          animation-name: stepper;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+@-webkit-keyframes stepper {
+  from {
+    color: #83898C;
+  }
+  to {
+    color: #5570F1;
+  }
+}
+@keyframes stepper {
+  from {
+    color: #83898C;
+  }
+  to {
+    color: #5570F1;
+  }
+}
+.container .stepper .step-indicator .gray {
+  color: #83898C;
+}
+.container .stepper .bar {
+  align-self: flex-start;
+  background: #5570F1;
+  border-radius: 20px;
+  height: 6px;
+  width: 100%;
+  -webkit-animation-name: bar;
+          animation-name: bar;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+@-webkit-keyframes bar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes bar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* input fields */
+  /* top group */
+  /* left group */
+  /* right group */
+  /* end of top inputs */
+  /* textarea for description  */
+  /* focusing on input field */
+  /* end of textarea */
+  /* submit button */
+  /* transition for submit button */
+  /* end of form */
+}
+.container form .top_group {
+  display: flex;
+  /* phone screen */
+}
+@media (max-width: 640px) {
+  .container form .top_group {
+    flex-direction: column;
+  }
+}
+.container form .left_group {
+  /* height and width */
+  width: 50%;
+  height: 167px;
+  /* phone screen */
+  /* title */
+  /* focusing on input field */
+}
+@media (max-width: 640px) {
+  .container form .left_group {
+    width: 100%;
+  }
+}
+.container form .left_group .title {
+  /* layout */
+  margin-right: 15px;
+  /* phone screen */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px 16px;
+  gap: 2px;
+  height: 58px;
+  flex-grow: 0;
+  flex-basis: 397px;
+  /* Background */
+  background-color: rgba(239, 241, 249, 0.6);
+  border-radius: 8px;
+  /* input style */
+  /* at focus show no border */
+  /* text styling */
+}
+@media (max-width: 640px) {
+  .container form .left_group .title {
+    margin-right: 0;
+  }
+}
+.container form .left_group .title input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.container form .left_group .title input:focus {
+  outline: none;
+}
+.container form .left_group .title label {
+  margin-top: 3px;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .title input::-moz-placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .title input:-ms-input-placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .title input::placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .title:focus-within {
+  outline: 2px solid rgba(85, 112, 241, 0.5);
+}
+.container form .left_group .image_url:focus-within {
+  outline: 2px solid rgba(85, 112, 241, 0.5);
+}
+.container form .left_group .image_url {
+  /* Auto layout */
+  margin-right: 15px;
+  /* phone screen */
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px 16px;
+  gap: 2px;
+  height: 58px;
+  flex-grow: 0;
+  flex-basis: 397px;
+  /* Background */
+  background-color: rgba(239, 241, 249, 0.6);
+  border-radius: 8px;
+  /* input style */
+  /* at focus show no border */
+  /* text styling */
+}
+@media (max-width: 640px) {
+  .container form .left_group .image_url {
+    margin-right: 0;
+  }
+}
+.container form .left_group .image_url input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.container form .left_group .image_url input:focus {
+  outline: none;
+}
+.container form .left_group .image_url label {
+  margin-top: 3px;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .image_url input::-moz-placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .image_url input:-ms-input-placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .left_group .image_url input::placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group {
+  /* height an width */
+  width: 50%;
+  height: 167px;
+  /* phone screen */
+  /* title */
+  /* focusing on input field */
+}
+@media (max-width: 640px) {
+  .container form .right_group {
+    width: 100%;
+  }
+}
+.container form .right_group .starting_bid {
+  /* Auto layout */
+  margin-left: 15px;
+  /* phone screen */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px 16px;
+  gap: 2px;
+  height: 58px;
+  flex-grow: 0;
+  flex-basis: 397px;
+  /* Background */
+  background-color: rgba(239, 241, 249, 0.6);
+  border-radius: 8px;
+  /* input style */
+  /* at focus show no border */
+  /* text styling */
+}
+@media (max-width: 640px) {
+  .container form .right_group .starting_bid {
+    margin-left: 0;
+  }
+}
+.container form .right_group .starting_bid input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.container form .right_group .starting_bid input:focus {
+  outline: none;
+}
+.container form .right_group .starting_bid label {
+  margin-top: 3px;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group .starting_bid input::-moz-placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group .starting_bid input:-ms-input-placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group .starting_bid input::placeholder {
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group .starting_bid:focus-within {
+  outline: 2px solid rgba(85, 112, 241, 0.5);
+}
+.container form .right_group .category:focus-within {
+  outline: 2px solid rgba(85, 112, 241, 0.5);
+}
+.container form .right_group .category {
+  /* Auto layout */
+  margin-left: 15px;
+  /* phone screen */
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px 16px;
+  gap: 2px;
+  height: 58px;
+  flex-grow: 0;
+  flex-basis: 397px;
+  /* Background */
+  background-color: rgba(239, 241, 249, 0.6);
+  border-radius: 8px;
+  /* input style */
+  /* at focus show no border */
+  /* text styling */
+}
+@media (max-width: 640px) {
+  .container form .right_group .category {
+    margin-left: 0;
+  }
+}
+.container form .right_group .category select {
+  border: none;
+  background-color: transparent;
+}
+.container form .right_group .category select:focus {
+  outline: none;
+}
+.container form .right_group .category label {
+  margin-top: 3px;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group .category select {
+  width: 100%;
+  color: #ABAFB1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.container form .right_group .category select option {
+  color: black;
+}
+.container form .right_group .category select .selected {
+  color: #ABAFB1;
+}
+.container form .description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 2px 2px 16px;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  /* Background */
+  background: rgba(239, 241, 249, 0.6);
+  border-radius: 8px;
+  /* Inside auto layout */
+  flex-grow: 0;
+  /* textarea input itself */
+}
+.container form .description #description {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.container form .description:focus-within {
+  outline: 2px solid rgba(85, 112, 241, 0.5);
+}
+.container form .submit {
+  /* button design */
+  width: 205px;
+  height: 53px;
+  background-color: transparent;
+  color: #5570F1;
+  border-color: #5570F1;
+  border-radius: 12px;
+  /* text design */
+  font-size: 17px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* adding a transition */
+  transition: background-color 1s, color 1s;
+  margin-top: 15px;
+  align-self: center;
+}
+.container form .submit:hover {
+  color: white;
+  background-color: #5570F1;
+}/*# sourceMappingURL=create_listing.css.map */

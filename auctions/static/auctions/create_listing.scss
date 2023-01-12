@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+/* container of the create new listing form */
+.container{
+    margin-top: 107px;
+    margin-bottom: 37px;
+
+    min-height: 300px;
+    height: fit-content;
+    border: 1px solid #DDE2E6;
+    border-radius: 20px;
+    max-width: 925px;
+    gap: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 37px 43px;
+    /* phone screen */
+    @media (max-width: 430px) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    @media (max-width: 370px) {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    /* create new lisitng greeting */
+    .greeting {
+        height: 30px;
+        font-size: 24px;
+        color: #2B2F32;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        
+        /* very small screen*/
+        @media (max-width: 315px) {
+            font-size: 21px;
+        }
+    }
+
+    /* stepper */
+    .stepper {
+        width: 100%;
+        height: 45px;
+        gap: 13px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+
+        /* steps indictor */
+        .step-indicator {
+            align-self: flex-end;
+            span{
+                text-align: right;
+                font-size: 14px;
+                font-family: 'Inter', sans-serif;
+                font-style: normal;
+                font-weight: 500;
+            }
+
+            /* blue span */
+            .blue {
+                color: #5570F1;
+                animation-name: stepper;
+                animation-duration: 1s;
+            }
+            /* span animation */
+            @keyframes stepper {
+                from {color: #83898C;}
+                to {color: #5570F1;}
+            }
+
+            /* gray span */
+            .gray {
+                color: #83898C;
+            }
+        }
+
+        /* bar */
+        .bar {
+            align-self: flex-start;
+            background: #5570F1;
+            border-radius: 20px;
+            height: 6px;
+            width: 100%;
+
+            animation-name: bar;
+            animation-duration: 1s;
+        }
+
+        /* stepper animation */
+        @keyframes bar {
+            from {width: 0%;}
+            to {width: 100%}
+        }
+    }
+
+    /* form */
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+        /* input fields */
+        /* top group */
+        .top_group {
+            display: flex;
+
+            /* phone screen */
+            @media (max-width: 640px) {
+                flex-direction: column;
+            }
+        }
+
+        /* left group */
+        .left_group{
+            /* height and width */
+            width: 50%;
+            height: 167px;
+
+            /* phone screen */
+            @media (max-width: 640px) {
+                width: 100%;
+            }
+
+            /* title */
+            .title{
+
+                /* layout */
+
+                margin-right: 15px;
+                /* phone screen */
+                @media (max-width: 640px) {
+                    margin-right: 0;
+                }
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 4px 16px;
+                gap: 2px;
+
+                height: 58px;
+
+                flex-grow: 0;
+                flex-basis: 397px;
+
+                /* Background */
+
+                background-color: rgba(239, 241, 249, 0.6);
+                border-radius: 8px;
+
+                /* input style */
+                input {
+                    width: 100%;
+                    border: none;
+                    background-color: transparent;
+                }
+
+                /* at focus show no border */
+                input:focus {
+                    outline: none;
+                }                
+
+                /* text styling */
+                label {
+                    margin-top: 3px;
+                    font-size: 12px;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+                input::placeholder {
+                    color: #ABAFB1;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+            }
+
+            /* focusing on input field */
+            .title:focus-within{
+                outline: 2px solid rgb(85, 112, 241, 0.5);
+            }
+            
+            .image_url:focus-within{
+                outline: 2px solid rgb(85, 112, 241, 0.5);
+            }
+
+            .image_url{
+
+                /* Auto layout */
+
+                margin-right: 15px;
+                /* phone screen */
+                @media (max-width: 640px) {
+                    margin-right: 0;
+                }
+
+                margin-top: 25px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 4px 16px;
+                gap: 2px;
+    
+                
+                height: 58px;
+                
+                flex-grow: 0;
+                flex-basis: 397px;
+
+                /* Background */
+    
+                background-color: rgba(239, 241, 249, 0.6);
+                border-radius: 8px;
+    
+                /* input style */
+                input {
+                    width: 100%;
+                    border: none;
+                    background-color: transparent;
+                }
+    
+                /* at focus show no border */
+                input:focus {
+                    outline: none;
+                }
+
+                /* text styling */
+                label {
+                    margin-top: 3px;
+                    font-size: 12px;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+                input::placeholder {
+                    color: #ABAFB1;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+            }
+        }
+
+        /* right group */
+        .right_group{
+            /* height an width */
+            width: 50%;
+            height: 167px;
+
+            /* phone screen */
+            @media (max-width: 640px) {
+                width: 100%;
+            }
+
+            /* title */
+            .starting_bid{
+
+                /* Auto layout */
+
+                margin-left: 15px;
+                /* phone screen */
+                @media (max-width: 640px) {
+                    margin-left: 0;
+                }
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 4px 16px;
+                gap: 2px;
+
+                height: 58px;
+                
+                flex-grow: 0;
+                flex-basis: 397px;
+
+                /* Background */
+
+                background-color: rgba(239, 241, 249, 0.6);
+                border-radius: 8px;
+
+                /* input style */
+                input {
+                    width: 100%;
+                    border: none;
+                    background-color: transparent;
+                }
+
+                /* at focus show no border */
+                input:focus {
+                    outline: none;
+                }
+
+                /* text styling */
+                label {
+                    margin-top: 3px;
+                    font-size: 12px;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+                input::placeholder {
+                    color: #ABAFB1;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+            }
+
+            /* focusing on input field */
+            .starting_bid:focus-within{
+                outline: 2px solid rgb(85, 112, 241, 0.5);
+            }
+            
+            .category:focus-within{
+                outline: 2px solid rgb(85, 112, 241, 0.5);
+            }
+
+            .category{
+
+                /* Auto layout */
+
+                margin-left: 15px;
+                /* phone screen */
+                @media (max-width: 640px) {
+                    margin-left: 0;
+                }
+
+                margin-top: 25px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 4px 16px;
+                gap: 2px;
+    
+                height: 58px;
+                
+                flex-grow: 0;
+                flex-basis: 397px;
+    
+                /* Background */
+    
+                background-color: rgba(239, 241, 249, 0.6);
+                border-radius: 8px;
+    
+                /* input style */
+                select {
+                    border: none;
+                    background-color: transparent;
+                }
+    
+                /* at focus show no border */
+                select:focus {
+                    outline: none;
+                }
+
+                /* text styling */
+                label {
+                    margin-top: 3px;
+                    font-size: 12px;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+
+                select {
+                    width: 100%;
+                    color: #ABAFB1;
+                    font-family: 'Inter', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    option {
+                        color: black;
+                    }
+                    .selected {
+                        color: #ABAFB1;
+                    }
+                }
+
+            }
+        
+        }
+        /* end of top inputs */
+
+        /* textarea for description  */
+        .description {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 8px 2px 2px 16px;
+            gap: 10px;
+            margin-bottom: 20px;
+
+            width: 100%;
+            height: fit-content;
+
+            /* Background */
+
+            background: rgba(239, 241, 249, 0.6);
+            border-radius: 8px;
+
+            /* Inside auto layout */
+            flex-grow: 0;
+
+            /* textarea input itself */
+            #description {
+                width: 100%;
+                height: 100%;
+                min-height: 190px;
+                background-color: transparent;
+                border: none;
+                outline: none;
+            }
+
+        }
+        /* focusing on input field */
+        .description:focus-within{
+            outline: 2px solid rgb(85, 112, 241, 0.5);
+        }
+        
+        /* end of textarea */
+
+        /* submit button */
+        .submit {
+            /* button design */
+            width: 205px;
+            height: 53px;
+            background-color: transparent;
+            color: #5570F1;
+            border-color: #5570F1;
+            border-radius: 12px;
+
+            /* text design */
+            font-size: 17px;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+
+            /* adding a transition */
+            transition: background-color 1s, color 1s;
+
+            margin-top: 15px;
+            align-self: center;
+        }
+        
+        /* transition for submit button */
+        .submit:hover {
+            color: white;
+            background-color: #5570F1;
+        }
+
+    /* end of form */
+    }
+}
