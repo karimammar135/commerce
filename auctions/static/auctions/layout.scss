@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300&display=swap');
 
 .nav_bar{
-    height: 70px;
+    height: 60px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -19,11 +19,14 @@
     background-position: center;
     background-size: cover;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+
+    /* small screens */
+    
 }
 
 /* logo */
 #cart_icon{
-    width: 55px;
+    width: 50px;
     margin-bottom: 5px;
 }
 
@@ -35,13 +38,13 @@
 
 .line{
     margin-left: 0.3rem;
-    height: 30px;
+    height: 29px;
     border: 1px solid black;
 }
 #shopey{
     margin-left: 0.3rem;
     font-family: 'Roboto', sans-serif;
-    font-size: 35px;
+    font-size: 30px;
     line-height: 50px;
     color: #C92D2D;
 }   
@@ -71,7 +74,7 @@
 /* dropdown */
 .dropbtn {
     color: white;
-    font-size: 2.1rem;
+    font-size: 2rem;
     border: none;
     cursor: pointer;
     transform: rotate(180deg);
