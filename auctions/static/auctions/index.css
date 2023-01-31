@@ -485,6 +485,7 @@
   text-decoration: none;
   padding: 1rem 2rem 1rem 2rem;
   font-size: 18.75px;
+  overflow: none;
   letter-spacing: 1.08px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
@@ -495,7 +496,7 @@
 @media (max-width: 375px) {
   .explore_listings_container .explore_listings_btn {
     width: 260px;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
     font-size: 15px;
   }
 }

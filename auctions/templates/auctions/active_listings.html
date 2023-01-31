@@ -1,0 +1,22 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block middle-content %}
+    <h1>All auction listings</h1>
+
+    <ul style="margin-top: 100px;">
+        {% for active_listing in active_listings %}
+        <div style="border: solid black 1px;">
+            <li>ID: {{ active_listing.id }}</li>
+            <li>Title: {{ active_listing.title }}</li>
+            <li>Image url: {{ active_listing.image_url }}</li>
+            <li>Category: {{ active_listing.category }}</li>
+            <li>Description: {{ active_listing.description }}</li>
+            <li>Bid: {{ active_listing.price.bid }}$</li>
+            <li>Current winner: {{ active_listing.price.current_winner }} </li>
+        </div>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
