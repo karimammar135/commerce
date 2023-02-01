@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap');
+
+/* active listings' items */
+/* listings container */
+
+.listings-container { 
+    margin-top: 100px;   
+    display: grid;
+    grid-template-columns: repeat(3, 31vw);
+    grid-gap: 15px;
+    margin-left: 0;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    width: fit-content;
+
+    @media(max-width: 1335px) {
+        grid-template-columns: repeat(2, 47vw);
+        margin-right: 10px;
+    }
+    @media(max-width: 870px) {
+        grid-template-columns: 90vw;
+        margin-right: 20px;
+    }
+    @media(min-width: 1700px){
+        grid-template-columns: repeat(3, 28vw);
+
+    }
+}
+
+.listing-item {
+    text-decoration: none;
+    transition: transform 0.6s, box-shadow 1s;
+
+    min-width: 270px;
+
+    height: 25rem;
+    background-color: #D9D9D9;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    
+    @media (min-width: 628px){
+        min-width: 400px;
+    }
+    /* design of the item */
+    border-radius: 10px 10px 10px 10px;
+    filter: drop-shadow(3.5px 3.5px 4px rgba(0, 0, 0, 0.3));
+
+    /* pic */
+    .pic {
+        width: 100%;
+        height: 12.5rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px 10px 0px 0px;
+        background-color: white;
+    }
+
+    /* item container */
+    .item-container{
+        bottom: 0px;
+        width: 90%;
+        height: 130px;
+        margin-top: 9px;
+        margin-left: 15px;
+        
+        /* title */
+        .title {
+            color: #000000;
+            font-family: 'Lora', serif;
+            font-style: normal;
+            font-size: 25px;
+            width: 100%;
+        }
+
+        /* description */
+        .description {
+            font-family: 'Livvic', sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            line-height: 25px;
+            color: #000000;
+            display: block;
+            overflow: hidden; /* important */
+            text-overflow: ellipsis;
+            display: -webkit-box; 
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-height: 70px;
+            width: 100%;
+        }
+
+        .centering {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            max-height: 70px;
+            width: 100%;
+        }
+    }
+
+    /* item footer */
+    .item-footer {
+        bottom: 0px;
+        background-color: #282828;
+        width: 100%;
+        height: 61px;
+        border-radius: 0 0 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .price {
+            color: #FFFFFF;
+            font-size: 25px;
+            margin-left: 15px;
+            margin-bottom: 2px;
+            line-height: 32px;
+            font-family: 'Noto Serif Khmer', serif;
+        }
+        .bids {
+            color: #FFFFFF;
+            font-size: 18.7598px;
+            margin-right: 15px;
+            line-height: 26px;
+            font-family: 'Open Sans', sans-serif;
+        }
+    }
+
+    /* end of design section*/
+}
+.listing-item:hover {
+    transform: scale(1.04);
+    box-shadow: rgba(56, 56, 56, 0.4) 0px 5px, rgba(51, 49, 50, 0.3) 0px 10px, rgba(51, 46, 49, 0.2) 0px 15px, rgba(53, 44, 50, 0.1) 0px 20px, rgba(97, 82, 91, 0.05) 0px 25px;
+}
+
+@media (min-width: 888px){
+    .listing-item {
+        margin-right: 0px;
+    }
+    .listings-container {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 313px){
+    .listing-item{
+        min-width: 200px;
+    }
+    .listings-container {
+        margin-left: 0px;
+    }
+}
+
+
+/* explore categories button */
+.explore_categories_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 0 2.9rem 0;
+
+    .explore_categories_btn {
+        background-color: transparent;
+        color:#C92D2D;
+        border: solid 1.3px #C92D2D;
+        text-decoration: none;
+        padding: 1rem 2rem 1rem 2rem;
+        font-size: 18.75px;
+        overflow: none;
+        letter-spacing: 1.08px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        line-height: 22px;
+        transition: background-color 1s, color 1s;
+        text-align: center;
+        @media (max-width: 375px) {
+            width: 260px;
+            padding: 1rem 0.5rem 1rem 0.5rem;
+            font-size: 15px;
+        }
+        @media (max-width: 300px) {
+            width: 240px;
+            padding: 1rem 0rem 1rem 0rem;
+            font-size: 15px;
+        }
+    }
+
+    .explore_categories_btn:hover {
+        background-color: #C92D2D;
+        color: white;
+    }
+}

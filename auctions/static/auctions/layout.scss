@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300&display=swap');
 
 .nav_bar{
+    z-index: 1; /* prevnts the navbar to be overrided by other elements*/
     height: 65px;
     position: fixed;
     top: 0;

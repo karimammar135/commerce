@@ -83,7 +83,7 @@
                         <a href="#">Whatchlist</a>
                         <a href="{% url 'create_listing' %}">Create Listing</a>
                         <a href="#">Contact us</a>
-                        <a href="#">Active listings</a>
+                        <a href="{% url 'active_listings' %}">Active listings</a>
                         <a href="#">Discover categories</a>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
         <!-- buttons -->
         <div class="buttons">
             <a href="#" class="btn btn-outline-danger">Descover Catigories</a>
-            <a href="#" class="btn btn-outline-danger act-list-button">Active listings</a>
+            <a href="{% url 'active_listings' %}" class="btn btn-outline-danger act-list-button">Active listings</a>
         </div>
 
     </div>

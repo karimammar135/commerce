@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Shopey{% endblock %}</title>
+        <title>Shopey - {% block title %}{% endblock %}</title>
         <link href="{% static 'auctions/media/cart.png' %}" rel="icon">
 
         <!-- meta -->
@@ -91,7 +91,7 @@
         </div>
         <!-- end of navbar -->
 
-        <div style="margin: 0px 10px 0px 10px;">
+        <div style="margin: 0px 0px 0px 0px; display: flex; justify-content: center;">
             {% block middle-content %}
             {% endblock %}
         </div>
