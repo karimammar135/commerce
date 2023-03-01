@@ -1,0 +1,189 @@
+{% extends 'auctions/layout.html' %}
+
+{% load static %}
+
+{% block title %}Listing-details{% endblock %}
+
+{% block head %}
+    <link href="{% static 'auctions/listing-details.css' %}" rel="stylesheet">
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="https://kit.fontawesome.com/a122ebbd90.css" crossorigin="anonymous">
+{% endblock %}
+
+{% block middle-content %}
+    <!-- desplaying details -->
+    <div class="container">
+        
+        <!-- top container -->
+        <div class="top-container">
+
+            <!-- left container (image of the listing item) -->
+
+            <div class="left-container" style="background-image:url('{{ listing.image_url }}');">&nbsp;
+
+                <!-- image counter -->
+                <span class="img-counter"></span>
+
+                <!-- full screen -->
+                <span class="full-screen-icon"></span>  
+
+            </div>
+
+            <!-- end of left container -->
+
+
+            <!-- right container -->
+            <div class="right-container">
+
+                <!-- first (title and price) container -->
+                <div class="first">
+                    <span class="title">{{ listing.title }}</span>
+                    <span class="price">${{ listing.price.bid }}*</span>
+                    <span class="decoration">incl. local Tax & Shipping.</span>
+                </div>
+
+                <!-- second (description) container -->
+                <div class="second">
+                    <span>{{ listing.description }}</span>
+                </div>
+
+                <!-- third (bids) container -->
+                <form class="third" method="post" action="{% url 'listing_details' listing.id %}">
+                    {% csrf_token %}
+                    <label>3 bid(s) so far. Your bid is the current bid.</label>
+                    <input class="bid-input" type="float" name="bid" placeholder="$ 0.00" autocomplete="off">
+                    <div class="btn-wrap">
+                        <input class="submit-btn" type="submit" value="BID">
+                    </div>
+                </form>
+                
+                <!-- fourth (details) container-->
+                <div class="fourth">
+                    <span class="details-greeting">Details</span>
+
+                    <!-- bar -->
+                    <div class="bar">
+                        <div class="line"><div class="small-line"></div></div>
+                    </div>
+
+                    <ul>
+                        <li><span>Listed by: </span> <span class="owner">Harry</span></li>
+                        <li><span>Category: No category listed.</span></li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- end of right container -->
+
+        </div>
+        <!-- end of top container-->
+        
+        
+        <!-- lower container(comments section) -->
+        <div class="lower-container">
+
+            <span class="details-greeting">comments</span>
+
+            <!-- bar -->
+            <div class="bar">
+                <div class="line"><div class="small-line"></div></div>
+            </div>
+
+            <!-- comments container -->
+            <div class="comments-container">
+
+                <!-- existing comments -->
+                <div class="comment">
+                    <div class="side-bar">
+                        <span class="sign">+</span>
+                        <span class="number">12</span>
+                        <span class="sign">-</span>
+                    </div>
+                    <div class="right-container">
+                        <!-- head -->
+                        <div class="head">
+                            <!-- profile -->
+                            <div class="profile">
+                                <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
+                                <span class="username">amyrobson</span>
+                                <span class="date">1 month ago</span>
+                            </div>
+
+                            <!-- reply -->
+                            <div class="reply-container">
+                                <i class="fa-solid fa-reply"></i>
+                                <span>Reply</span>
+                            </div>
+
+                        </div>
+                        <!-- end of head -->
+
+                        <!-- the actual comment itself -->
+                        <p>Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.</p>
+                    
+                    </div>
+                </div>
+
+                <!-- another comment -->
+                <div class="comment">
+                    <div class="side-bar">
+                        <span class="sign">+</span>
+                        <span class="number">5</span>
+                        <span class="sign">-</span>
+                    </div>
+                    <div class="right-container">
+                        <!-- head -->
+                        <div class="head">
+                            <!-- profile -->
+                            <div class="profile">
+                                <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
+                                <span class="username">maxblagun</span>
+                                <span class="date">2 weeks ago</span>
+                            </div>
+
+                            <!-- reply -->
+                            <div class="reply-container">
+                                <i class="fa-solid fa-reply"></i>
+                                <span>Reply</span>
+                            </div>
+
+                        </div>
+                        <!-- end of head -->
+
+                        <!-- the actual comment itself -->
+                        <p>Woah, your project looks awesome! How long have you been coding for? I’m still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!</p>
+                    
+                    </div>
+                </div>
+
+                <!-- end of existing comments -->
+
+                <!-- bar in between -->
+                <div class="middle-bar"></div>
+
+                <!-- add a new comment -->
+                <div class="add_comment">
+
+                    <div class="comment_profile">
+                        <!-- profile icon -->
+                        <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
+
+                        <!-- add comment textarea field -->
+                        <textarea id="add_comment" name="add_comment" rows="4" cols="50" placeholder="Add a comment..."></textarea>
+                    </div>
+
+                    <!-- submit the comment -->
+                    <input type="submit" value="SEND">
+
+                </div>
+
+            </div>
+            <!-- end of comments container -->
+
+        </div>
+        <!-- end of the lower container (comments section) -->
+
+    </div>
+    <!-- end od desplaying details' container -->
+
+{% endblock %}

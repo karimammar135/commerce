@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block middle-content %}
+
     <h1></h1>
 
     <!-- active listings -->
@@ -19,7 +20,7 @@
 
             {% for active_listing in active_listings %}
                 <!-- listings blocks -->
-                <a class="listing-item" href="#">
+                <a class="listing-item" href="{% url 'listing_details' active_listing.id %}">
                     <!-- picture -->
                     <div class="pic" style="background-image:url('{{ active_listing.image_url }}');">&nbsp;</div>
 

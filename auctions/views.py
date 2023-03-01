@@ -106,6 +106,7 @@ def create_listing(request):
 
 
 ## displaying active listings to the user 
+@login_required
 def active_listings(request):
 
     # display all the data in the database related to the auction listing to the user
@@ -117,3 +118,13 @@ def active_listings(request):
 ## error page 
 def error(request):
     return render(request, "auctions/error.html")
+
+
+## show details about a listing to the user 
+@login_required
+def listing_details(request, id):
+    
+    # desplaying an html page with all the details of an auction listing
+    return render(request, "auctions/listing_details.html", {
+        "listing": auction_listings.objects.get(id = id)
+    })

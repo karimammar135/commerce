@@ -4,7 +4,6 @@
   margin-top: 100px;
   margin-bottom: 37px;
   min-height: 300px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   border: 1px solid #DDE2E6;
@@ -72,18 +71,8 @@
 }
 .container .stepper .step-indicator .blue {
   color: #5570F1;
-  -webkit-animation-name: stepper;
-          animation-name: stepper;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-}
-@-webkit-keyframes stepper {
-  from {
-    color: #83898C;
-  }
-  to {
-    color: #5570F1;
-  }
+  animation-name: stepper;
+  animation-duration: 1s;
 }
 @keyframes stepper {
   from {
@@ -102,18 +91,8 @@
   border-radius: 20px;
   height: 6px;
   width: 100%;
-  -webkit-animation-name: bar;
-          animation-name: bar;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-}
-@-webkit-keyframes bar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
+  animation-name: bar;
+  animation-duration: 1s;
 }
 @keyframes bar {
   from {
@@ -206,12 +185,6 @@
   font-style: normal;
   font-weight: 400;
 }
-.container form .left_group .title input:-ms-input-placeholder {
-  color: #ABAFB1;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-}
 .container form .left_group .title input::placeholder {
   color: #ABAFB1;
   font-family: "Inter", sans-serif;
@@ -265,12 +238,6 @@
   font-weight: 400;
 }
 .container form .left_group .image_url input::-moz-placeholder {
-  color: #ABAFB1;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-}
-.container form .left_group .image_url input:-ms-input-placeholder {
   color: #ABAFB1;
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -335,12 +302,6 @@
   font-weight: 400;
 }
 .container form .right_group .starting_bid input::-moz-placeholder {
-  color: #ABAFB1;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-}
-.container form .right_group .starting_bid input:-ms-input-placeholder {
   color: #ABAFB1;
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -418,7 +379,6 @@
   gap: 10px;
   margin-bottom: 20px;
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   /* Background */
