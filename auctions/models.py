@@ -9,10 +9,12 @@ class User(AbstractUser):
 # bids table
 class Bids(models.Model):
     bid = models.FloatField()
-    current_winner = models.CharField(max_length=64)
+    total_bids = models.IntegerField(blank=True, default='0')
+    current_winner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="current_winner")
 
     def __str__(self):
-        return f"bid: {self.bid}, current_winner: {self.current_winner}"
+        return f"bid: {self.bid}, total_bids: {self.total_bids},current_winner: {self.current_winner}"
+
 
 
 # auction listings model 
@@ -22,7 +24,7 @@ class auction_listings(models.Model):
     image_url = models.URLField(blank=True) # not required (optional)
     category = models.CharField(max_length=64, blank=True) # not required (optional)
     description = models.TextField() 
-    owner = models.CharField(max_length=64, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="owner")
     active = models.BooleanField(default=True)
 
     # changable fields
@@ -31,3 +33,13 @@ class auction_listings(models.Model):
     def __str__ (self):
         return f"{self.id}, Title: {self.title}, {self.price}, image_url: {self.image_url}, category: {self.category}, description: {self.description}"
 
+
+
+# comments table
+class Comments(models.Model):
+    listing = models.ForeignKey(auction_listings, on_delete=models.CASCADE, related_name="auction_listing")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
+    comment = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"user: {self.user}, comment: {self.comment}, listing: {self.listing.id}"

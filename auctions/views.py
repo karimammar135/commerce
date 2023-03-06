@@ -5,7 +5,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import User, auction_listings, Bids
+from .models import User, auction_listings, Bids, Comments
+
+from django.contrib import messages #import messages
 
 # returning index(main) page
 def index(request):
@@ -86,14 +88,14 @@ def create_listing(request):
         # if there was no errors
         else:
             # current logged in user
-            current_user = request.user
+            owner = request.user
 
             # saving data related to the bids models
-            bid = Bids(bid=starting_bid, current_winner=current_user)
+            bid = Bids(bid=starting_bid, current_winner=owner)
             bid.save()
 
             # save the data in the sqlite database 
-            new_listing = auction_listings(title=title, price=bid, image_url=image_url, category=category, description=description, owner=current_user)
+            new_listing = auction_listings(title=title, price=bid, image_url=image_url, category=category, description=description, owner=owner)
             new_listing.save()
 
             # redirect the user to a page that displays all active listings 
@@ -124,7 +126,74 @@ def error(request):
 @login_required
 def listing_details(request, id):
     
-    # desplaying an html page with all the details of an auction listing
-    return render(request, "auctions/listing_details.html", {
-        "listing": auction_listings.objects.get(id = id)
-    })
+    
+    ## if bids form submitted using post method
+    if request.POST.get("form_name") == "bid":
+        print("bid form")
+
+        # collecting submitted data
+        new_bid = float(request.POST["bid"])
+
+        # current logged in user
+        current_user = request.user
+
+        # getting the auction listing according to it's id
+        listing = auction_listings.objects.get(id = id)
+
+        # save the data in the database(bids' table) if the new bid is greater than the old one
+        if new_bid > listing.price.bid:
+
+            # modify th data
+            listing.price.bid = new_bid
+            listing.price.total_bids += 1
+            listing.price.current_winner = current_user
+            listing.price.save()
+            print(f"{listing}")
+            
+            # redirect the user to a page that displays all active listings 
+            return HttpResponseRedirect(reverse("active_listings"))
+            
+        else:
+            print("you have to give a larger bid")
+            # redirect the user to the page that displays all active listings 
+            return HttpResponseRedirect(reverse("active_listings"))
+
+
+    ## if comments form submitted using post method
+    elif request.POST.get("form_name") == "comment":
+        print("comment form")
+
+        # collecting submitted data
+        comment = str(request.POST["add_comment"])
+
+        # current logged in user
+        current_user = request.user
+
+        # getting the auction listing according to it's id
+        listing = auction_listings.objects.get(id = id)
+
+        # add the data to the database(comments' table)
+        comment = Comments(listing=listing, comment=comment, author=current_user)
+        comment.save()
+
+        # redirect the user to a page that displays all active listings 
+        return HttpResponseRedirect(reverse("active_listings"))
+    
+
+    # if get method 
+    else:
+        # get the specific auction listing and the comments made on it
+        listing = auction_listings.objects.get(id = id)
+        comments = Comments.objects.filter(listing=listing)
+
+        # calculating the number of comments comments
+        total_comments = 0
+        for comment in comments:
+            total_comments += 1
+
+        # desplaying an html page with all the details of an auction listing
+        return render(request, "auctions/listing_details.html", {
+            "listing": listing,
+            "comments": comments,
+            "total_comments": total_comments
+        })

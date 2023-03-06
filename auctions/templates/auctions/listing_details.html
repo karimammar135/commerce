@@ -48,14 +48,20 @@
                 </div>
 
                 <!-- third (bids) container -->
+                <!-- bids form -->
                 <form class="third" method="post" action="{% url 'listing_details' listing.id %}">
                     {% csrf_token %}
-                    <label>3 bid(s) so far. Your bid is the current bid.</label>
-                    <input class="bid-input" type="float" name="bid" placeholder="$ 0.00" autocomplete="off">
+                    <label>{{ listing.price.total_bids }} bid(s) so far. Your bid is the current bid.</label>
+                    <input class="bid-input" type="number" step="any" name="bid" placeholder="$ 0.00" autocomplete="off">
                     <div class="btn-wrap">
                         <input class="submit-btn" type="submit" value="BID">
                     </div>
+
+                    <!-- form name -->
+                    <input type="hidden" name="form_name" value="bid">
+
                 </form>
+                <!-- end of bids form  -->
                 
                 <!-- fourth (details) container-->
                 <div class="fourth">
@@ -67,8 +73,8 @@
                     </div>
 
                     <ul>
-                        <li><span>Listed by: </span> <span class="owner">Harry</span></li>
-                        <li><span>Category: No category listed.</span></li>
+                        <li><span>Listed by: </span><span class="owner">  {{ listing.owner }}</span></li>
+                        <li><span>Category:  {{ listing.category }}</span></li>
                     </ul>
                 </div>
 
@@ -91,79 +97,54 @@
 
             <!-- comments container -->
             <div class="comments-container">
-
-                <!-- existing comments -->
-                <div class="comment">
-                    <div class="side-bar">
-                        <span class="sign">+</span>
-                        <span class="number">12</span>
-                        <span class="sign">-</span>
-                    </div>
-                    <div class="right-container">
-                        <!-- head -->
-                        <div class="head">
-                            <!-- profile -->
-                            <div class="profile">
-                                <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
-                                <span class="username">amyrobson</span>
-                                <span class="date">1 month ago</span>
-                            </div>
-
-                            <!-- reply -->
-                            <div class="reply-container">
-                                <i class="fa-solid fa-reply"></i>
-                                <span>Reply</span>
-                            </div>
-
+                
+                <!-- looping over each comment individually -->
+                {% for comment in comments %}
+                    <!-- comment -->
+                    <div class="comment">
+                        <div class="side-bar">
+                            <span class="sign">+</span>
+                            <span class="number">12</span>
+                            <span class="sign">-</span>
                         </div>
-                        <!-- end of head -->
+                        <div class="right-container">
+                            <!-- head -->
+                            <div class="head">
+                                <!-- profile -->
+                                <div class="profile">
+                                    <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
+                                    <span class="username">{{ comment.user }}</span>
+                                    <span class="date">1 month ago</span>
+                                </div>
 
-                        <!-- the actual comment itself -->
-                        <p>Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.</p>
-                    
-                    </div>
-                </div>
+                                <!-- reply -->
+                                <div class="reply-container">
+                                    <i class="fa-solid fa-reply"></i>
+                                    <span>Reply</span>
+                                </div>
 
-                <!-- another comment -->
-                <div class="comment">
-                    <div class="side-bar">
-                        <span class="sign">+</span>
-                        <span class="number">5</span>
-                        <span class="sign">-</span>
-                    </div>
-                    <div class="right-container">
-                        <!-- head -->
-                        <div class="head">
-                            <!-- profile -->
-                            <div class="profile">
-                                <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
-                                <span class="username">maxblagun</span>
-                                <span class="date">2 weeks ago</span>
                             </div>
+                            <!-- end of head -->
 
-                            <!-- reply -->
-                            <div class="reply-container">
-                                <i class="fa-solid fa-reply"></i>
-                                <span>Reply</span>
-                            </div>
-
+                            <!-- the actual comment itself -->
+                            <p>{{ comment.comment }}</p>
+                        
                         </div>
-                        <!-- end of head -->
-
-                        <!-- the actual comment itself -->
-                        <p>Woah, your project looks awesome! How long have you been coding for? I’m still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!</p>
-                    
                     </div>
-                </div>
+                {% endfor %}
+                <!-- end of for loop -->
 
-                <!-- end of existing comments -->
+                <!-- if there is no comments -->
+                {% if total_comments == 0 %}
+                    <span style="font-size: 15px;">No comments yet.</span>
+                {% endif %}
 
                 <!-- bar in between -->
                 <div class="middle-bar"></div>
 
                 <!-- add a new comment -->
-                <div class="add_comment">
-
+                <form class="add_comment" method="post" action="{% url 'listing_details' listing.id %}">
+                    {% csrf_token %}
                     <div class="comment_profile">
                         <!-- profile icon -->
                         <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
@@ -175,7 +156,10 @@
                     <!-- submit the comment -->
                     <input type="submit" value="SEND">
 
-                </div>
+                    <!-- form name -->
+                    <input type="hidden" name="form_name" value="comment">
+
+                </form>
 
             </div>
             <!-- end of comments container -->

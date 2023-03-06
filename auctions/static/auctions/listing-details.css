@@ -406,7 +406,6 @@
   }
 }
 .lower-container .comments-container .comment .head .profile {
-  width: 248px;
   /* flexbox */
   display: flex;
   justify-content: space-between;
@@ -414,16 +413,6 @@
   /* profile icon */
   /* username */
   /* date */
-}
-@media (max-width: 325px) {
-  .lower-container .comments-container .comment .head .profile {
-    width: 230px;
-  }
-}
-@media (max-width: 295px) {
-  .lower-container .comments-container .comment .head .profile {
-    width: 140px;
-  }
 }
 .lower-container .comments-container .comment .head .profile img {
   height: 32px;
@@ -435,6 +424,8 @@
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   align-self: flex-end;
+  margin-left: 18px;
+  margin-right: 18px;
 }
 .lower-container .comments-container .comment .head .profile .date {
   color: #67727E;
