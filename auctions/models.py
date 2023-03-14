@@ -7,39 +7,42 @@ class User(AbstractUser):
 
 
 # bids table
-class Bids(models.Model):
+class Bid(models.Model):
     bid = models.FloatField()
-    total_bids = models.IntegerField(blank=True, default='0')
-    current_winner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="current_winner")
+    winner = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bids")
 
     def __str__(self):
-        return f"bid: {self.bid}, total_bids: {self.total_bids},current_winner: {self.current_winner}"
+        return f"bid: {self.bid}, bidder: {self.user}, winner: {self.winner}"
 
 
 
 # auction listings model 
-class auction_listings(models.Model):
+class AuctionListing(models.Model):
     # unchangable fields(fixed)
     title = models.CharField(max_length=64)
     image_url = models.URLField(blank=True) # not required (optional)
     category = models.CharField(max_length=64, blank=True) # not required (optional)
     description = models.TextField() 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="owner")
-    active = models.BooleanField(default=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
+    original_price = models.FloatField()
 
     # changable fields
-    price = models.ForeignKey(Bids, on_delete=models.CASCADE, related_name="price")
+    total_bids = models.IntegerField(default='0')
+    active = models.BooleanField(default=True)
+
+    price = models.ForeignKey(Bid, on_delete=models.CASCADE, blank=True)
 
     def __str__ (self):
-        return f"{self.id}, Title: {self.title}, {self.price}, image_url: {self.image_url}, category: {self.category}, description: {self.description}"
+        return f"{self.id}, Title: {self.title}, owner: {self.owner}, Active: {self.active}, total_bids: {self.total_bids}, {self.price}, image_url: {self.image_url}, category: {self.category}, description: {self.description}, original_price: {self.original_price}"
 
 
 
 # comments table
-class Comments(models.Model):
-    listing = models.ForeignKey(auction_listings, on_delete=models.CASCADE, related_name="auction_listing")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
-    comment = models.TextField(blank=True)
+class Comment(models.Model):
+    listing = models.ForeignKey(AuctionListing, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField()
 
     def __str__(self):
-        return f"user: {self.user}, comment: {self.comment}, listing: {self.listing.id}"
+        return f"author: {self.author}, comment: {self.comment}, listing: {self.listing.id}"

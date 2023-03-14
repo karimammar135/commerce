@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import User, auction_listings, Bids, Comments
+from .models import User, AuctionListing, Bid, Comment
 
 from django.contrib import messages #import messages
 
@@ -90,12 +90,12 @@ def create_listing(request):
             # current logged in user
             owner = request.user
 
-            # saving data related to the bids models
-            bid = Bids(bid=starting_bid, current_winner=owner)
+            # make a starting bid and save it to the database
+            bid = Bid(bid=starting_bid, user=owner, winner=True)
             bid.save()
 
             # save the data in the sqlite database 
-            new_listing = auction_listings(title=title, price=bid, image_url=image_url, category=category, description=description, owner=owner)
+            new_listing = AuctionListing(title=title, price=bid, original_price=starting_bid, image_url=image_url, category=category, description=description, owner=owner)
             new_listing.save()
 
             # redirect the user to a page that displays all active listings 
@@ -113,7 +113,7 @@ def active_listings(request):
 
     # display all the data in the database related to the auction listing to the user
     return render(request, "auctions/active_listings.html", {
-        "active_listings": auction_listings.objects.all()
+        "active_listings": AuctionListing.objects.all()
     })
 
 
@@ -138,16 +138,27 @@ def listing_details(request, id):
         current_user = request.user
 
         # getting the auction listing according to it's id
-        listing = auction_listings.objects.get(id = id)
+        listing = AuctionListing.objects.get(id = id)
 
         # save the data in the database(bids' table) if the new bid is greater than the old one
         if new_bid > listing.price.bid:
 
-            # modify th data
-            listing.price.bid = new_bid
-            listing.price.total_bids += 1
-            listing.price.current_winner = current_user
+            # make the last bid not a winner (winner=flase)
+            listing.price.winner = False
             listing.price.save()
+
+            # make a new bid and save it to the database
+            bid = Bid(bid=new_bid, user=current_user, winner=True)
+            bid.save()
+
+            # save the bid in the auction_listings model
+            listing.price = bid
+            listing.price.save()
+
+            # modefy total bids
+            listing.total_bids += 1
+            listing.save()
+            
             print(f"{listing}")
             
             # redirect the user to a page that displays all active listings 
@@ -170,10 +181,10 @@ def listing_details(request, id):
         current_user = request.user
 
         # getting the auction listing according to it's id
-        listing = auction_listings.objects.get(id = id)
+        listing = AuctionListing.objects.get(id = id)
 
         # add the data to the database(comments' table)
-        comment = Comments(listing=listing, comment=comment, author=current_user)
+        comment = Comment(listing=listing, comment=comment, author=current_user)
         comment.save()
 
         # redirect the user to a page that displays all active listings 
@@ -183,8 +194,8 @@ def listing_details(request, id):
     # if get method 
     else:
         # get the specific auction listing and the comments made on it
-        listing = auction_listings.objects.get(id = id)
-        comments = Comments.objects.filter(listing=listing)
+        listing = AuctionListing.objects.get(id = id)
+        comments = listing.comments.all()
 
         # calculating the number of comments comments
         total_comments = 0

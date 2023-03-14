@@ -51,7 +51,7 @@
                 <!-- bids form -->
                 <form class="third" method="post" action="{% url 'listing_details' listing.id %}">
                     {% csrf_token %}
-                    <label>{{ listing.price.total_bids }} bid(s) so far. Your bid is the current bid.</label>
+                    <label>{{ listing.total_bids }} bid(s) so far. Your bid is the current bid.</label>
                     <input class="bid-input" type="number" step="any" name="bid" placeholder="$ 0.00" autocomplete="off">
                     <div class="btn-wrap">
                         <input class="submit-btn" type="submit" value="BID">
@@ -113,7 +113,7 @@
                                 <!-- profile -->
                                 <div class="profile">
                                     <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
-                                    <span class="username">{{ comment.user }}</span>
+                                    <span class="username">{{ comment.author }}</span>
                                     <span class="date">1 month ago</span>
                                 </div>
 
