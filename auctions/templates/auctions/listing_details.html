@@ -13,6 +13,25 @@
 {% block middle-content %}
     <!-- desplaying details -->
     <div class="container">
+
+        <!-- header -->
+        <div class="header">
+            <!-- close auction button if the auction is for the owner -->
+            <div class="centering" style="display: flex; justify-content: center; align-items: center;">
+                <div class="polygon-border">
+                   <button>Close Auction</button> 
+                </div>
+            </div>
+
+            <!-- add to whatchlist -->
+            <div class="watchlist">
+                <img alt="watchlist-icon" src="{% static 'auctions/media/add_watchlist.png' %}">
+                <a href="#" >Add to whatchlist</a>
+            </div>
+            
+        </div>
+        <!-- end of header -->
+
         
         <!-- top container -->
         <div class="top-container">

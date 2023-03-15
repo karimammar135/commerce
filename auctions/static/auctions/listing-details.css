@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kadwa:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
 /* the main container that contains everything */
 .container {
-  margin: 130px 0 0 0;
+  margin: 82px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +22,6 @@
 @media (max-width: 1260px) {
   .container {
     min-width: 100vw;
-    margin-top: 100px;
   }
 }
 @media (max-width: 576px) {
@@ -159,7 +159,8 @@
   padding-bottom: 10.5px;
   gap: 10px;
   margin-top: 3px;
-  box-shadow: 0px 0px 0px 2px #FDE2DD, inset 0px 0px 0px 1px #CD3D64;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 0px 0px 0px 2px #FDE2DD, inset 0px 0px 0px 1px #CD3D64;
   border-radius: 4px;
   border: none;
 }
@@ -580,4 +581,148 @@
   color: #67727E;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-}/*# sourceMappingURL=listing-details.css.map */
+}
+
+.header {
+  /* flex container */
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 91vw;
+  margin-bottom: 17px;
+  /* adjusting the styles according to different screen sizes */
+  /* add to whatchlist container */
+  /* end of add to watchlist */
+  /* end auction listing button */
+  /* hover effect */
+  /* ending of end auction listing button */
+  /* adjusting the styles according to different screen sizes */
+  /* screens between 730px and 500px */
+  /* end of screens between 730px and 500px */
+  /* screens smaller than 500px */
+  /* end of screens smaller than 500px */
+  /* screens less than 380px */
+  /* end of screens smaller than 380px */
+}
+@media (max-width: 1260px) {
+  .header {
+    width: 94.5vw;
+  }
+}
+.header .watchlist {
+  display: flex;
+  align-self: flex-end;
+  /* icon */
+  /* anchor tag */
+}
+.header .watchlist img {
+  margin-right: 1.5px;
+  width: 23px;
+  height: 23px;
+}
+.header .watchlist a {
+  font-size: 15.5px;
+  font-family: "Aldrich", sans-serif;
+  color: #000000;
+  text-decoration: none;
+  align-self: center;
+  margin-top: 2px;
+}
+.header .polygon-border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 165px;
+  height: 34px;
+  -webkit-clip-path: polygon(0 15%, 2.5% 0, 97.5% 0, 100% 15%, 100% 85%, 97.5% 100%, 2.5% 100%, 0% 85%);
+          clip-path: polygon(0 15%, 2.5% 0, 97.5% 0, 100% 15%, 100% 85%, 97.5% 100%, 2.5% 100%, 0% 85%);
+  background-color: #C92D2D;
+}
+.header button {
+  width: 163px;
+  height: 32px;
+  /* styles */
+  background-color: white;
+  border: none;
+  -webkit-clip-path: polygon(0 15%, 2.5% 0, 97.5% 0, 100% 15%, 100% 85%, 97.5% 100%, 2.5% 100%, 0% 85%);
+          clip-path: polygon(0 15%, 2.5% 0, 97.5% 0, 100% 15%, 100% 85%, 97.5% 100%, 2.5% 100%, 0% 85%);
+  /* text */
+  color: #C92D2D;
+  letter-spacing: 0.75px;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 3px;
+  /* transition effect */
+  transition: background-color 1s, color 1s;
+}
+.header button:hover {
+  background-color: #C92D2D;
+  color: white;
+}
+@media (max-width: 730px) and (min-width: 500px) {
+  .header {
+    /* watchlist size */
+    /* close auction listing button size */
+  }
+  .header .watchlist img {
+    height: 18px;
+    width: 18px;
+  }
+  .header .watchlist a {
+    font-size: 14px;
+    margin-top: 0px;
+  }
+  .header .polygon-border {
+    width: 162px;
+    height: 31px;
+  }
+  .header button {
+    width: 160px;
+    height: 29px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 499px) {
+  .header {
+    /* watchlist size */
+    /* close auction listing button size */
+  }
+  .header .watchlist img {
+    height: 14px;
+    width: 14px;
+    margin-top: 1px;
+  }
+  .header .watchlist a {
+    font-size: 12px;
+    margin-top: 0px;
+  }
+  .header .polygon-border {
+    width: 142px;
+    height: 26px;
+  }
+  .header button {
+    width: 140px;
+    height: 24px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .header {
+    /* close auction listing button size */
+  }
+  .header .polygon-border {
+    width: 120px;
+    height: 26px;
+  }
+  .header button {
+    width: 118px;
+    height: 25px;
+    font-size: 9px;
+  }
+}
+
+/* end of header *//*# sourceMappingURL=listing-details.css.map */

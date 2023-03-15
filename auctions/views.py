@@ -126,7 +126,6 @@ def error(request):
 @login_required
 def listing_details(request, id):
     
-    
     ## if bids form submitted using post method
     if request.POST.get("form_name") == "bid":
         print("bid form")
