@@ -8,26 +8,75 @@
     <link href="{% static 'auctions/listing-details.css' %}" rel="stylesheet">
     <!-- fontawesome icons -->
     <link rel="stylesheet" href="https://kit.fontawesome.com/a122ebbd90.css" crossorigin="anonymous">
+
+    <!-- javascript for alerts -->
+    <script type="text/javascript">
+        function showMessage(btnId) {
+            if (btnId == "close_auction") alert("You closed the Auction.");
+            else if (btnId == "cant_bid") alert("Can't Bid! The auction is already closed.");
+            else if (btnId == "btnShowMsg3") alert("You clicked on Button 3.");
+            else alert("Invalid Button Id.");
+        }
+    </script>
+
 {% endblock %}
 
 {% block middle-content %}
     <!-- desplaying details -->
     <div class="container">
-
+        
         <!-- header -->
         <div class="header">
             <!-- close auction button if the auction is for the owner -->
-            <div class="centering" style="display: flex; justify-content: center; align-items: center;">
-                <div class="polygon-border">
-                   <button>Close Auction</button> 
-                </div>
-            </div>
+            {% if listing.active == True and current_user == listing.owner %}
+                <div class="centering" style="display: flex; justify-content: center; align-items: center;">
 
-            <!-- add to whatchlist -->
-            <div class="watchlist">
-                <img alt="watchlist-icon" src="{% static 'auctions/media/add_watchlist.png' %}">
-                <a href="#" >Add to whatchlist</a>
-            </div>
+                    <!-- form -->
+                    <form class="polygon-border" method="post" action="{% url 'listing_details' listing.id %}">
+                        <!-- csrf token -->
+                        {% csrf_token %}
+
+                        <!-- submit button -->
+                        <input class="close_auction_submit" name="close_auction" type="submit" value="Close Auction" id="close_auction" onClick="showMessage(this.id)" />
+
+                        <!-- form name -->
+                        <input type="hidden" name="form_name" value="close_auction">
+                    </form>
+
+                </div>
+            {% else %}
+                <div style="width: 165px; height: 34px;"></div>
+            {% endif %}
+            <!-- end of close auction button -->
+
+            <!-- add to whatchlist form -->
+            <form method="post" action="{% url 'listing_details' listing.id %}">
+                <!-- csrf token -->
+                {% csrf_token %}
+
+                <!-- add to watchlist submit button -->
+                <div class="watchlist">
+                    <img alt="watchlist-icon" src="{% static 'auctions/media/add_watchlist.png' %}">
+
+                    {% if watchlist == False %}
+                        <!-- if the auction listing is not added to the watchlist -->
+                        <input class="watchlist_submit" type="submit" value="Add to whatchlist">
+                        <!-- form name -->
+                        <input type="hidden" name="form_name" value="add_watchlist">
+                    {% else %}
+                        <!-- if the auction listing is already added to the watchlist -->
+                        <input class="watchlist_submit" type="submit" value="Remove from whatchlist">
+                        <!-- form name -->
+                        <input type="hidden" name="form_name" value="remove_watchlist">
+                    {% endif %}
+
+                    <!-- listing's id -->
+                    <input type="hidden" name="listing_id" value="{{ listing.id }}">
+
+                </div>
+
+            </form>
+            <!-- end of add to watchlist form -->
             
         </div>
         <!-- end of header -->
@@ -71,9 +120,13 @@
                 <form class="third" method="post" action="{% url 'listing_details' listing.id %}">
                     {% csrf_token %}
                     <label>{{ listing.total_bids }} bid(s) so far. Your bid is the current bid.</label>
-                    <input class="bid-input" type="number" step="any" name="bid" placeholder="$ 0.00" autocomplete="off">
+                    <input class="bid-input" type="number" step="any" name="bid" placeholder="$ 0.00" autocomplete="off" required>
                     <div class="btn-wrap">
-                        <input class="submit-btn" type="submit" value="BID">
+                        {% if listing.active == True %}
+                            <input class="submit-btn" type="submit" value="BID">
+                        {% else %}
+                            <button class="submit-btn" id="cant_bid" onClick="showMessage(this.id)">BID</button>
+                        {% endif %}
                     </div>
 
                     <!-- form name -->
@@ -94,6 +147,10 @@
                     <ul>
                         <li><span>Listed by: </span><span class="owner">  {{ listing.owner }}</span></li>
                         <li><span>Category:  {{ listing.category }}</span></li>
+                        <!-- sho the winner if th auction is closed -->
+                        {% if listing.active == False %}
+                            <li><span>Winner:  {{ listing.price.user }}</span></li>
+                        {% endif %}
                     </ul>
                 </div>
 

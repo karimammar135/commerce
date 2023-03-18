@@ -593,6 +593,7 @@
   margin-bottom: 17px;
   /* adjusting the styles according to different screen sizes */
   /* add to whatchlist container */
+  /* hover effect */
   /* end of add to watchlist */
   /* end auction listing button */
   /* hover effect */
@@ -604,6 +605,8 @@
   /* end of screens smaller than 500px */
   /* screens less than 380px */
   /* end of screens smaller than 380px */
+  /* screens less than 300px */
+  /* end of screens less than 300px */
 }
 @media (max-width: 1260px) {
   .header {
@@ -613,21 +616,30 @@
 .header .watchlist {
   display: flex;
   align-self: flex-end;
+  transition: text-decoration-color 1s, -webkit-text-decoration 1s;
+  transition: text-decoration 1s, text-decoration-color 1s;
+  transition: text-decoration 1s, text-decoration-color 1s, -webkit-text-decoration 1s;
   /* icon */
-  /* anchor tag */
+  /* submit */
 }
 .header .watchlist img {
-  margin-right: 1.5px;
+  margin-right: 1px;
   width: 23px;
   height: 23px;
 }
-.header .watchlist a {
+.header .watchlist .watchlist_submit {
   font-size: 15.5px;
   font-family: "Aldrich", sans-serif;
   color: #000000;
-  text-decoration: none;
+  border: none;
+  background-color: transparent;
   align-self: center;
   margin-top: 2px;
+  padding: 0;
+}
+.header .watchlist:hover {
+  text-decoration: underline;
+  text-decoration-color: #C92D2D;
 }
 .header .polygon-border {
   display: flex;
@@ -639,7 +651,7 @@
           clip-path: polygon(0 15%, 2.5% 0, 97.5% 0, 100% 15%, 100% 85%, 97.5% 100%, 2.5% 100%, 0% 85%);
   background-color: #C92D2D;
 }
-.header button {
+.header .close_auction_submit {
   width: 163px;
   height: 32px;
   /* styles */
@@ -659,7 +671,7 @@
   /* transition effect */
   transition: background-color 1s, color 1s;
 }
-.header button:hover {
+.header .close_auction_submit:hover {
   background-color: #C92D2D;
   color: white;
 }
@@ -672,7 +684,7 @@
     height: 18px;
     width: 18px;
   }
-  .header .watchlist a {
+  .header .watchlist .watchlist_submit {
     font-size: 14px;
     margin-top: 0px;
   }
@@ -680,7 +692,7 @@
     width: 162px;
     height: 31px;
   }
-  .header button {
+  .header .close_auction_submit {
     width: 160px;
     height: 29px;
     font-size: 12px;
@@ -696,7 +708,7 @@
     width: 14px;
     margin-top: 1px;
   }
-  .header .watchlist a {
+  .header .watchlist .watchlist_submit {
     font-size: 12px;
     margin-top: 0px;
   }
@@ -704,7 +716,7 @@
     width: 142px;
     height: 26px;
   }
-  .header button {
+  .header .close_auction_submit {
     width: 140px;
     height: 24px;
     font-size: 10px;
@@ -715,13 +727,24 @@
     /* close auction listing button size */
   }
   .header .polygon-border {
-    width: 120px;
-    height: 26px;
+    width: 108px;
+    height: 23px;
   }
-  .header button {
-    width: 118px;
-    height: 25px;
+  .header .close_auction_submit {
+    width: 106px;
+    height: 22px;
     font-size: 9px;
+  }
+}
+@media (max-width: 300px) {
+  .header .watchlist img {
+    height: 12px;
+    width: 12px;
+    margin-top: 4px;
+  }
+  .header .watchlist .watchlist_submit {
+    font-size: 11px;
+    margin-top: 2.8px;
   }
 }
 

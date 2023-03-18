@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import User, AuctionListing, Bid, Comment
+from .models import User, AuctionListing, Bid, Comment, Watchlist
 
 from django.contrib import messages #import messages
 
@@ -131,13 +131,23 @@ def listing_details(request, id):
         print("bid form")
 
         # collecting submitted data
-        new_bid = float(request.POST["bid"])
+        if request.POST["bid"] == "":
+            return render(request, "auctions/error.html", {
+                "error": "Provide a bid."
+            })
+        else:
+            new_bid = float(request.POST["bid"])
 
         # current logged in user
         current_user = request.user
 
         # getting the auction listing according to it's id
         listing = AuctionListing.objects.get(id = id)
+
+        # verify if the auction is active or not
+        if listing.active == False:
+            # redirect the user to a page that displays all active listings 
+            return HttpResponseRedirect(reverse('listing_details', kwargs={'id':id}))
 
         # save the data in the database(bids' table) if the new bid is greater than the old one
         if new_bid > listing.price.bid:
@@ -166,7 +176,9 @@ def listing_details(request, id):
         else:
             print("you have to give a larger bid")
             # redirect the user to the page that displays all active listings 
-            return HttpResponseRedirect(reverse("active_listings"))
+            return render(request, "auctions/error.html", {
+                "error": "Your bid was not submitted successfuly. You have to provide a larger bid."
+            })
 
 
     ## if comments form submitted using post method
@@ -190,6 +202,66 @@ def listing_details(request, id):
         return HttpResponseRedirect(reverse("active_listings"))
     
 
+
+
+    ## if close auction form submitted using post method
+    elif request.POST.get("form_name") == "close_auction":
+        print("auction closed")
+        
+        # getting the auction listing according to it's id
+        listing = AuctionListing.objects.get(id = id)
+
+        # change the value of active in the database to false in order to close the auction
+        listing.active = False
+        listing.save()
+
+        # redirect the user to a page that displays all active listings 
+        return HttpResponseRedirect(reverse("active_listings"))
+
+
+
+    ## if add to watchlist form submitted using post method
+    elif request.POST.get("form_name") == "add_watchlist":
+
+        # taking listing id from the form 
+        listing_id = request.POST["listing_id"]
+        
+        # taking the listing from the database
+        listing = AuctionListing.objects.get(id=listing_id)
+
+        # current logged in user
+        current_user = request.user
+
+        # create the watchlist object
+        watchlist = Watchlist(listing=listing, user=current_user)
+        watchlist.save()
+        
+        print(f"added to watchlist {watchlist}")
+        
+        # redirect the user to a page that displays all active listings 
+        return HttpResponseRedirect(reverse("active_listings"))
+
+
+    ## if remove from watchlist form submitted using post method
+    elif request.POST.get("form_name") == "remove_watchlist":
+        # get listing id from the form 
+        listing_id = request.POST["listing_id"]
+        
+        # get the listing from the database
+        listing = AuctionListing.objects.get(id=listing_id)
+
+        # current logged in user
+        current_user = request.user
+
+        # get the specific watchlist object
+        watchlist = Watchlist.objects.get(listing=listing, user=current_user)
+        watchlist.delete()
+
+        # redirect the user to a page that displays all active listings 
+        return HttpResponseRedirect(reverse("active_listings"))
+
+
+
     # if get method 
     else:
         # get the specific auction listing and the comments made on it
@@ -201,9 +273,24 @@ def listing_details(request, id):
         for comment in comments:
             total_comments += 1
 
+        # checking if the listing is active
+        active = listing.active
+        
+        # get the current user of the listing
+        current_user = request.user
+
+        # checking if the listing is added to the watchlist
+        try:
+            watchlist = current_user.watchlist.get(listing=listing)
+            watchlist = True
+        except:
+            watchlist = False
+        
         # desplaying an html page with all the details of an auction listing
         return render(request, "auctions/listing_details.html", {
             "listing": listing,
             "comments": comments,
-            "total_comments": total_comments
+            "total_comments": total_comments,
+            "current_user": current_user,
+            "watchlist": watchlist
         })
