@@ -253,7 +253,7 @@ def listing_details(request, id):
         # current logged in user
         current_user = request.user
 
-        # get the specific watchlist object
+        # get the specific watchlist object and delete it
         watchlist = Watchlist.objects.get(listing=listing, user=current_user)
         watchlist.delete()
 

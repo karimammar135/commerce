@@ -56,15 +56,16 @@
 
                 <!-- add to watchlist submit button -->
                 <div class="watchlist">
-                    <img alt="watchlist-icon" src="{% static 'auctions/media/add_watchlist.png' %}">
 
                     {% if watchlist == False %}
                         <!-- if the auction listing is not added to the watchlist -->
+                        <img alt="watchlist-icon" src="{% static 'auctions/media/add_watchlist.png' %}">
                         <input class="watchlist_submit" type="submit" value="Add to whatchlist">
                         <!-- form name -->
                         <input type="hidden" name="form_name" value="add_watchlist">
                     {% else %}
                         <!-- if the auction listing is already added to the watchlist -->
+                        <img alt="watchlist-icon" src="{% static 'auctions/media/added_watchlist.png' %}">
                         <input class="watchlist_submit" type="submit" value="Remove from whatchlist">
                         <!-- form name -->
                         <input type="hidden" name="form_name" value="remove_watchlist">
