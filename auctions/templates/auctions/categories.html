@@ -2,13 +2,7 @@
 
 {% load static %}
 
-{% block title %}
-    {% if footer == "explore_categories" %}
-        Active Listings
-    {% else %}
-        Watchlist
-    {% endif %}
-{% endblock %}
+{% block title %}Active-listings{% endblock %}
 
 {% block head %}
     <link href="{% static 'auctions/active_listings.css' %}" rel="stylesheet">
@@ -24,7 +18,7 @@
         <!-- listings blocks container -->
         <div class="listings-container">
 
-            {% for active_listing in active_listings %}
+            {% for category in categories %}
                 <!-- listings blocks -->
                 <a class="listing-item" href="{% url 'listing_details' active_listing.id %}">
                     <!-- picture -->

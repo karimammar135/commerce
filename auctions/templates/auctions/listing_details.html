@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Listing-details{% endblock %}
+{% block title %}{{ listing.title }}{% endblock %}
 
 {% block head %}
     <link href="{% static 'auctions/listing-details.css' %}" rel="stylesheet">
@@ -12,7 +12,7 @@
     <!-- javascript for alerts -->
     <script type="text/javascript">
         function showMessage(btnId) {
-            if (btnId == "close_auction") alert("You closed the Auction.");
+            if (btnId == "close_auction") alert("You just closed the Auction.");
             else if (btnId == "cant_bid") alert("Can't Bid! The auction is already closed.");
             else if (btnId == "btnShowMsg3") alert("You clicked on Button 3.");
             else alert("Invalid Button Id.");

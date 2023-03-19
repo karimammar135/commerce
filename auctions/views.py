@@ -113,7 +113,32 @@ def active_listings(request):
 
     # display all the data in the database related to the auction listing to the user
     return render(request, "auctions/active_listings.html", {
-        "active_listings": AuctionListing.objects.all()
+        "active_listings": AuctionListing.objects.all(),
+        "footer": "explore_categories"
+    })
+
+
+## displaying listings in watchlist to the user 
+@login_required
+def watchlist(request):
+
+    # getting all listings in the watchlist
+    current_user = request.user
+    watchlist = current_user.watchlist.all()
+    listings = []
+    for listing in watchlist:
+        listings.append(listing.listing)
+
+    # checking if the watchlist is empty
+    if listings == []:
+        footer = "empty_watchlist"
+    else: 
+        footer = "none"
+
+    # display all the data in the database related to the auction listing to the user
+    return render(request, "auctions/active_listings.html", {
+        "active_listings": listings,
+        "footer": footer
     })
 
 
@@ -199,7 +224,7 @@ def listing_details(request, id):
         comment.save()
 
         # redirect the user to a page that displays all active listings 
-        return HttpResponseRedirect(reverse("active_listings"))
+        return HttpResponseRedirect(reverse("listing_details", args=(listing.id,)))
     
 
 
@@ -239,7 +264,7 @@ def listing_details(request, id):
         print(f"added to watchlist {watchlist}")
         
         # redirect the user to a page that displays all active listings 
-        return HttpResponseRedirect(reverse("active_listings"))
+        return HttpResponseRedirect(reverse("watchlist"))
 
 
     ## if remove from watchlist form submitted using post method
@@ -258,7 +283,7 @@ def listing_details(request, id):
         watchlist.delete()
 
         # redirect the user to a page that displays all active listings 
-        return HttpResponseRedirect(reverse("active_listings"))
+        return HttpResponseRedirect(reverse("watchlist"))
 
 
 
@@ -294,3 +319,6 @@ def listing_details(request, id):
             "current_user": current_user,
             "watchlist": watchlist
         })
+
+
+## listing categories

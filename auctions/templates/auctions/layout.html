@@ -60,7 +60,7 @@
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link i_2">Whatchlist</a>
+                    <a class="nav-link i_2" href="{% url 'watchlist' %}">Whatchlist</a>
                     <span class="underline"></span>
                 </li>
                 <li class="nav-item">
@@ -78,7 +78,7 @@
                         <div id="myDropdown" class="dropdown-content">
                             <a href="{% url 'logout' %}">Log out</a>
                             <a href="/#">Home</a>
-                            <a href="#">Whatchlist</a>
+                            <a href="{% url 'watchlist' %}">Watchlist</a>
                             <a href="{% url 'create_listing' %}">Create Listing</a>
                             <a href="#">Contact us</a>
                             <a href="{% url 'active_listings' %}">Active listings</a>
