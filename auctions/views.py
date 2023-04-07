@@ -398,9 +398,6 @@ def category_listings(request, category_name, category_img):
             original_listing
         ]
         listings.append(listing)
-        items += 1
-
-    print(f"{listings}")
         
     if items == 0:
         listings = ""
