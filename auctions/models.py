@@ -22,10 +22,21 @@ class AuctionListing(models.Model):
     # unchangable fields(fixed)
     title = models.CharField(max_length=64)
     image_url = models.URLField(blank=True) # not required (optional)
-    category = models.CharField(max_length=64, blank=True) # not required (optional)
     description = models.TextField() 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
     original_price = models.FloatField()
+
+    # category
+    CATEGORIES = [
+        ('Cars', 'cars'),
+        ('Technology', 'technology'),
+        ('Education', 'education'),
+        ('Home', 'home'),
+        ('Art', 'art'),
+        ('Gaming', 'gaming'),
+        ('Toys', 'toys'),
+    ]
+    category = models.CharField(max_length=10, choices=CATEGORIES, blank=True) # not required (optional)
 
     # changable fields
     total_bids = models.IntegerField(default='0')

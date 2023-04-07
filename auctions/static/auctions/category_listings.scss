@@ -1,0 +1,164 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+.main-container{
+    width: 100%;
+    background-color: #3AA8E4;
+    height: 100vh;
+    position: relative;
+    margin-top: 50px;
+
+    /* main category image */
+    .category-image {
+        background-image: url('https://www.reviewgeek.com/p/uploads/2020/12/19a62eff.jpg?height=200p&trim=2,2,2,2');
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        width: 100%;
+        height: 99vh;
+
+        /* display flex to put the waves at the end of the container */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+    /* waves icon */
+    .waves {
+        width: 100%;
+        height: 40vh;
+        min-height: calc(0.664 * 40vw);
+        position: absolute;
+        bottom: 0;
+
+        /* background image */
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        background-position: bottom;
+    }
+}
+
+/* color */
+.content{
+    height: fit-content;
+    min-height: 200px;
+    background-color: #3AA8E4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* image */
+    .image{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        height: 295px;
+        width: 505px;
+    }
+} 
+
+/* listing */
+.listing {
+    width: 89%;
+    margin-bottom: 100px; 
+
+    /* flex container */
+    display: flex;
+    justify-content: space-between;
+
+    /* image */
+    .image{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        height: 295px;
+        min-width: 505px;
+        width: 40%;
+
+        border-radius: 10px;
+        
+    }
+    /* end of image */
+
+    /* text-container */
+    .text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 55%;
+        @media (max-width: 1320px) and (min-width: 1150px){
+            margin-left: 20px;
+        }
+
+        p {
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 19px;
+        }
+        
+        .check-listing-btn {
+            background-color: transparent;
+            color:#C92D2D;
+            border: solid 1.3px #C92D2D;
+            text-decoration: none;
+            padding: 0.7rem 2rem 1rem 2rem;
+            font-size: 14px;
+            letter-spacing: 1.08px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            line-height: 22px;
+            transition: background-color 1s, color 1s;
+            text-align: center;
+
+            width: 189px;
+            height: 44px;
+        }
+    
+        .check-listing-btn:hover {
+            background-color: #C92D2D;
+            color: white;
+        }
+    }
+    /* text-container */
+
+    /* media queries */
+    @media (max-width: 1150px) and (min-width: 530px){
+        flex-direction: column;
+        align-items: center;
+        .image{
+            width: 70%;
+        }
+        .text-container {
+            margin-top: 20px;
+            width: 70%;
+            min-width: 480px;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 529px) {
+        flex-direction: column;
+        align-items: center;
+        .image{
+            width: 90%;
+            min-width: 260px;
+        }
+        .text-container {
+            margin-top: 20px;
+            width: 90%;
+            min-width: 260px;
+            align-items: center;
+            p {
+                margin-left: 15px;
+            }
+        }
+    }
+
+}

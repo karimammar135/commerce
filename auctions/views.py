@@ -11,7 +11,22 @@ from django.contrib import messages #import messages
 
 # returning index(main) page
 def index(request):
-    return render(request, "auctions/index.html")
+
+    # get only the first four listings
+    all_listings = AuctionListing.objects.all()
+    listings = []
+    count = 0
+    for listing in all_listings:
+        count += 1
+        if count > 4:
+            exit
+        else:
+            listings.append(listing)
+    print(f"{listings}")
+
+    return render(request, "auctions/index.html", {
+        "listings": listings
+    })
 
 # login 
 def login_view(request):
@@ -81,10 +96,14 @@ def create_listing(request):
         description = request.POST["description"]
         starting_bid = request.POST["starting_bid"]
 
+        # if there is no provided image assign it with the default image
+        if image_url == "":
+            image_url = "https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image.jpg?ver=6"
+
         # checking for errors
         if title == "" or description == "" or starting_bid == "":
             return HttpResponseRedirect(reverse("error"))
-
+        
         # if there was no errors
         else:
             # current logged in user
@@ -153,7 +172,6 @@ def listing_details(request, id):
     
     ## if bids form submitted using post method
     if request.POST.get("form_name") == "bid":
-        print("bid form")
 
         # collecting submitted data
         if request.POST["bid"] == "":
@@ -208,7 +226,6 @@ def listing_details(request, id):
 
     ## if comments form submitted using post method
     elif request.POST.get("form_name") == "comment":
-        print("comment form")
 
         # collecting submitted data
         comment = str(request.POST["add_comment"])
@@ -231,7 +248,6 @@ def listing_details(request, id):
 
     ## if close auction form submitted using post method
     elif request.POST.get("form_name") == "close_auction":
-        print("auction closed")
         
         # getting the auction listing according to it's id
         listing = AuctionListing.objects.get(id = id)
@@ -260,8 +276,6 @@ def listing_details(request, id):
         # create the watchlist object
         watchlist = Watchlist(listing=listing, user=current_user)
         watchlist.save()
-        
-        print(f"added to watchlist {watchlist}")
         
         # redirect the user to a page that displays all active listings 
         return HttpResponseRedirect(reverse("watchlist"))
@@ -322,3 +336,78 @@ def listing_details(request, id):
 
 
 ## listing categories
+def categories(request):
+    # available categories and there required data
+    cars = [
+        'Cars',
+        'https://researchleap.com/wp-content/uploads/2015/12/5.-luxury-cars-in-china.jpg',
+    ]
+    technology = [
+        'Technology',
+        'https://www.deccanherald.com/sites/dh/files/styles/article_detail/public/articleimages/2023/01/23/scienceistock-1183792-1674473443.jpg?itok=bc45v91O',
+    ]
+    education = [
+        'Education',
+        'https://media.istockphoto.com/id/1320882544/photo/glowing-light-bulb-and-book-or-text-book-with-futuristic-icon-self-learning-or-education.jpg?s=612x612&w=0&k=20&c=1fCGnLilpVhM1rw2DKgtTcujYezmelfPFYPB4dyhuuk=',
+    ]
+    home = [
+        'Home',
+        'https://cdn.homedit.com/wp-content/uploads/2011/02/decorate-the-bookshelf-with-diff-books.jpg',
+    ]
+    art = [
+        'Art',
+        'https://imgv3.fotor.com/images/slider-image/goart_guide_pc_now_3.jpg',
+    ]
+    gaming = [
+        'Gaming',
+        'https://www.reviewgeek.com/p/uploads/2020/12/19a62eff.jpg?height=200p&trim=2,2,2,2',
+    ]
+    toys = [
+        'Toys',
+        'https://rare-gallery.com/uploads/posts/4577090-indiana-jones-lego-motorcycle-water.jpg',
+    ]
+    
+
+    # categories
+    categories = [
+        cars,
+        technology,
+        education,
+        home,
+        art,
+        gaming,
+        toys,
+    ]
+
+    return render(request, "auctions/categories.html", {
+        "categories": categories
+    })
+
+
+## displaying category's listings
+def category_listings(request, category_name, category_img):
+    
+    # get listings present in the specific category
+    all_listings = AuctionListing.objects.filter(category=category_name)
+    
+    items = 0
+    listings = []
+    for original_listing in all_listings:
+        listing = [
+            items%2,
+            original_listing
+        ]
+        listings.append(listing)
+        items += 1
+
+    print(f"{listings}")
+        
+    if items == 0:
+        listings = ""
+
+    # render an html page showing all listings in the category
+    return render(request, "auctions/category_listings.html", {
+        "category_name": category_name,
+        "category_img": category_img,
+        "listings": listings
+    })

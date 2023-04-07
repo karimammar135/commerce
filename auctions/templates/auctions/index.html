@@ -84,7 +84,7 @@
                         <a href="{% url 'create_listing' %}">Create Listing</a>
                         <a href="#">Contact us</a>
                         <a href="{% url 'active_listings' %}">Active listings</a>
-                        <a href="#">Discover categories</a>
+                        <a href="{% url 'categories' %}">Discover categories</a>
                     </div>
                 </div>
 
@@ -116,7 +116,7 @@
 
         <!-- buttons -->
         <div class="buttons">
-            <a href="#" class="btn btn-outline-danger">Descover Catigories</a>
+            <a href="{% url 'categories' %}" class="btn btn-outline-danger">Descover Catigories</a>
             <a href="{% url 'active_listings' %}" class="btn btn-outline-danger act-list-button">Active listings</a>
         </div>
 
@@ -137,83 +137,28 @@
         <!-- listings blocks container -->
         <div class="listings-container">
 
-            <!-- listings blocks -->
-            <a class="listing-item" href="#">
-                <!-- picture -->
-                <div class="pic pic1"></div>
+            {% for listing in listings %}
+                <!-- listings blocks -->
+                <a class="listing-item" href="{% url 'listing_details' listing.id %}">
+                    <!-- picture -->
+                    <div class="pic" style="background-image: url('{{ listing.image_url }}');"></div>
 
-                <!-- title and description -->
-                <div class="item-container">
-                    <span class="title">Mercedes G-class</span>
-                    <div class="centering">
-                        <span class="description">It is equiped with an 8-cylender turbo engine</span>
+                    <!-- title and description -->
+                    <div class="item-container">
+                        <span class="title">{{ listing.title }}</span>
+                        <div class="centering">
+                            <span class="description">{{ listing.description }}</span>
+                        </div>
+                        
                     </div>
                     
-                </div>
-                
-                <!-- item footer -->
-                <div class="item-footer">
-                    <span class="price">9300.0$</span>
-                    <span class="bids">10 bids</span>
-                </div>
-            </a>
-
-            <a class="listing-item" href="#">
-                <!-- picture -->
-                <div class="pic pic2"></div>
-
-                <!-- title and description -->
-                <div class="item-container">
-                    <span class="title">Smart TV</span>
-                    <div class="centering">
-                        <span class="description">Contains all modern features (Netflix, Youtube, Internet access.....)</span>
+                    <!-- item footer -->
+                    <div class="item-footer">
+                        <span class="price">{{ listing.price.bid }}$</span>
+                        <span class="bids">{{ listing.total_bids }} bids</span>
                     </div>
-                </div>
-
-                <!-- item footer-->
-                <div class="item-footer">
-                    <span class="price">500.0$</span>
-                    <span class="bids">6 bids</span>
-                </div>
-            </a>
-
-            <a class="listing-item" href="#">
-                <!-- picture -->
-                <div class="pic pic3"></div>
-
-                <!-- title and description -->
-                <div class="item-container">
-                    <span class="title">Watch</span>
-                    <div class="centering">
-                        <span class="description">Gorgeous watch with a silver strap.</span>
-                    </div>
-                </div>
-
-                <!-- item footer -->
-                <div class="item-footer">
-                    <span class="price">450.0$</span>
-                    <span class="bids">13 bids</span>
-                </div>
-            </a>
-
-            <a class="listing-item" href="#">
-                <!-- footer -->
-                <div class="pic pic4"></div>
-
-                <!-- title and description -->
-                <div class="item-container">
-                    <span class="title">Bedside lamp</span>
-                    <div class="centering">
-                        <span class="description">Small nightstand lamp with LED bulb and wood stand </span>
-                    </div>
-                </div>
-
-                <!-- item footer -->
-                <div class="item-footer">
-                    <span class="price">39.99$</span>
-                    <span class="bids">2 bids</span>
-                </div>
-            </a>
+                </a>
+            {% endfor %}
             <a class="hiden"></a>
             <a class="hiden"></a>
         </div>

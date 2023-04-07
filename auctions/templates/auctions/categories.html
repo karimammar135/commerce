@@ -2,61 +2,65 @@
 
 {% load static %}
 
-{% block title %}Active-listings{% endblock %}
+{% block title %}Categories{% endblock %}
 
 {% block head %}
     <link href="{% static 'auctions/active_listings.css' %}" rel="stylesheet">
+
+    <!-- some stylings -->
+    <style>
+        .category-img {
+            width: 100%;
+            height: 21.2rem;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px 0px 0px 0px;
+            background-color: lightgray;
+        }
+        .category-footer {
+            background-color: #282828;
+            width: 100%;
+            height: 61px;
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .category-title{
+            color: white;
+            font-size: 25px;
+            font-family: 'Lora', serif;
+            font-style: normal;
+            font-weight: 400;
+        }
+    </style>
+
 {% endblock %}
 
 {% block middle-content %}
 
-    <h1></h1>
+<!-- displaying the categories in the form of containers -->
 
-    <!-- active listings -->
-    <div class="active-listings">
+<div style="margin-top: 100px;" class="listings-container">
 
-        <!-- listings blocks container -->
-        <div class="listings-container">
+    {% for category in categories %}
 
-            {% for category in categories %}
-                <!-- listings blocks -->
-                <a class="listing-item" href="{% url 'listing_details' active_listing.id %}">
-                    <!-- picture -->
-                    <div class="pic" style="background-image:url('{{ active_listing.image_url }}');">&nbsp;</div>
+        <!-- listing category block -->
+        <a class="listing-item" style="border-radius: 10px 0px 10px 10px;" href="{% url 'category_listings' category_name=category.0 category_img=category.1 %}">
 
-                    <!-- title and description -->
-                    <div class="item-container">
-                        <span class="title">{{ active_listing.title }}</span>
-                        <div class="centering">
-                            <span class="description">{{ active_listing.description }}</span>
-                        </div>
-                        
-                    </div>
-                    
-                    <!-- item footer -->
-                    <div class="item-footer">
-                        <span class="price">{{ active_listing.price.bid }}$</span>
-                        <span class="bids">{{ active_listing.total_bids }} bids</span>
-                    </div>
-                </a>
-            {% endfor %}
+            <!-- category's specific image -->
+            <div class="category-img" style="background-image: url('{{ category.1 }}');">&nbsp;</div>
 
-        </div>
-
-        {% if footer == "explore_categories" %}
-            <!-- discover categories button -->
-            <div class="explore_categories_container">
-                <a class="explore_categories_btn" href="#">Explore Categories>></a>
+            <!-- item footer -->
+            <div class="category-footer">
+                <span class="category-title">{{ category.0 }}</span>
             </div>
-        {% elif footer == "empty_watchlist" %}
-            <!-- no listings in the wathlist -->
-            <div style="height: 200px;">
-                <div class="alert alert-dark" role="alert" style="display: flex; justify-content: center; align-items: center; margin: 90px 10px 40px 10px; min-width: 60vw;">
-                    No Listings in the watchlist yet.
-                </div>
-            </div>
-        {% endif %}
+        </a>
         
-    </div>
+    {% endfor %}
+
+</div>
+
 
 {% endblock %}

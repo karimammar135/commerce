@@ -88,7 +88,11 @@
 
             <!-- left container (image of the listing item) -->
 
-            <div class="left-container" style="background-image:url('{{ listing.image_url }}');">&nbsp;
+            {% if listing.image_url == "" %}
+                <div class="left-container" style="background-image:url(https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image.jpg?ver=6);">
+            {% else %}
+                <div class="left-container" style="background-image:url('{{ listing.image_url }}');">&nbsp;
+            {% endif %}
 
                 <!-- image counter -->
                 <span class="img-counter"></span>

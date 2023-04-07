@@ -1,0 +1,87 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block head %}
+    <link href="{% static 'auctions/category_listings.css' %}" rel="stylesheet">
+
+    <!-- styles for order property -->
+    <style>
+      @media (min-width: 1150px){
+        .right {
+          order: 2;  
+        }
+        .left {
+          order: 1;
+        }
+      }
+    </style>
+{% endblock %}
+
+{% block middle-content %}
+
+    <!-- align items in the center -->
+    <div style="display: flex; flex-direction: column; width: 100vw;">
+
+        <!-- container containing the image and the waves -->
+        <div class="main-container">
+
+            <!-- category image  -->
+            <div class="category-image" style="background-image: url('{{ category_img }}');">&nbsp;
+                
+            </div>
+            
+            <!-- waves -->
+            <div class="waves" style="background-image: url('/static/auctions/media/waves.png');"></div>
+            
+        </div>
+        <!-- end of main container -->
+
+
+        <!-- content -->
+        <div class="content">
+
+          {% if listings == "" %}
+            <span style="color: white; margin-bottom: 100px;">No listings in this category yet.</span>
+
+          {% else %}
+            {% for listing in listings %}
+              <!-- listing -->
+              <div class="listing">
+
+                <!-- image -->
+                {% if listing.0 == 0 %}
+                  <div class="image" style="background-image: url('{{ listing.1.image_url }}');">&nbsp;</div>
+                {% else %}
+                  <div class="image right" style="background-image: url('{{ listing.1.image_url }}');">&nbsp;</div>
+                {% endif %}
+
+                <!-- text + button -->
+                {% if listing.0 == 0 %}
+                  <div class="text-container">
+                {% else %}
+                  <div class="text-container left">
+                {% endif %}
+                  <!-- text -->
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium
+                    nemo autem.</p>
+
+                  <!-- button -->
+                  <a class="check-listing-btn" href="{% url 'listing_details' listing.1.id %}">Check Listing</a>
+
+                </div>
+                <!-- text + button -->
+
+              </div>
+              <!-- end of listing -->
+            {% endfor %}
+          {% endif %}
+
+        </div>
+        <!-- end of content -->
+
+    </div>
+
+{% endblock %}

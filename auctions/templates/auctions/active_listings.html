@@ -27,8 +27,14 @@
             {% for active_listing in active_listings %}
                 <!-- listings blocks -->
                 <a class="listing-item" href="{% url 'listing_details' active_listing.id %}">
-                    <!-- picture -->
-                    <div class="pic" style="background-image:url('{{ active_listing.image_url }}');">&nbsp;</div>
+
+                    {% if active_listing.image_url == "" %}
+                        <!-- no image available -->
+                        <div class="pic" style="background-image:url(https://us.123rf.com/450wm/yehorlisnyi/yehorlisnyi2104/yehorlisnyi210400016/167492439-no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image.jpg?ver=6);"></div>
+                    {% else %}
+                        <!-- picture -->
+                        <div class="pic" style="background-image:url('{{ active_listing.image_url }}');">&nbsp;</div>
+                    {% endif %}
 
                     <!-- title and description -->
                     <div class="item-container">
@@ -52,7 +58,7 @@
         {% if footer == "explore_categories" %}
             <!-- discover categories button -->
             <div class="explore_categories_container">
-                <a class="explore_categories_btn" href="#">Explore Categories>></a>
+                <a class="explore_categories_btn" href="{% url 'categories' %}">Explore Categories>></a>
             </div>
         {% elif footer == "empty_watchlist" %}
             <!-- no listings in the wathlist -->
