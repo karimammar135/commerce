@@ -402,6 +402,8 @@ def category_listings(request, category_name, category_img):
     if items == 0:
         listings = ""
 
+    print(f"{listings}")
+
     # render an html page showing all listings in the category
     return render(request, "auctions/category_listings.html", {
         "category_name": category_name,
