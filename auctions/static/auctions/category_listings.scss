@@ -42,12 +42,12 @@ body {
     }
 }
 /* smaller screens */
-@media (max-width: 1000px) and (min-width: 800px){
+@media (max-width: 1050px) and (min-width: 800px){
     .main-container{
-        height: 90vh;
-        margin-bottom: 10vh;
+        height: 85vh;
+        margin-bottom: 15vh;
         .category-image {
-            height: 89vh;
+            height: 84vh;
         }
     }
 }
@@ -62,10 +62,10 @@ body {
 }
 @media (max-width: 499px){
     .main-container{
-        height: 60vh;
-        margin-bottom: 40vh;
+        height: 70vh;
+        margin-bottom: 30vh;
         .category-image {
-            height: 59vh;
+            height: 69vh;
         }
     }
 }

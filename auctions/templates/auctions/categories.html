@@ -47,7 +47,7 @@
     {% for category in categories %}
 
         <!-- listing category block -->
-        <a class="listing-item" style="border-radius: 10px 0px 10px 10px;" href="{% url 'category_listings' category_name=category.0 category_img=category.1 %}">
+        <a class="listing-item" style="border-radius: 10px 0px 10px 10px;" href="{% url 'category_listings' category_name=category.0 %}">
 
             <!-- category's specific image -->
             <div class="category-img" style="background-image: url('{{ category.1 }}');">&nbsp;</div>
