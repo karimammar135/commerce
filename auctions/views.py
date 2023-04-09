@@ -335,38 +335,40 @@ def listing_details(request, id):
         })
 
 
+
+
+# available categories and there required data
+cars = [
+    'Cars',
+    'https://researchleap.com/wp-content/uploads/2015/12/5.-luxury-cars-in-china.jpg',
+]
+technology = [
+    'Technology',
+    'https://www.deccanherald.com/sites/dh/files/styles/article_detail/public/articleimages/2023/01/23/scienceistock-1183792-1674473443.jpg?itok=bc45v91O',
+]
+education = [
+    'Education',
+    'https://media.istockphoto.com/id/1320882544/photo/glowing-light-bulb-and-book-or-text-book-with-futuristic-icon-self-learning-or-education.jpg?s=612x612&w=0&k=20&c=1fCGnLilpVhM1rw2DKgtTcujYezmelfPFYPB4dyhuuk=',
+]
+home = [
+    'Home',
+    'https://cdn.homedit.com/wp-content/uploads/2011/02/decorate-the-bookshelf-with-diff-books.jpg',
+]
+art = [
+    'Art',
+    'https://imgv3.fotor.com/images/slider-image/goart_guide_pc_now_3.jpg',
+]
+gaming = [
+    'Gaming',
+    'https://www.reviewgeek.com/p/uploads/2020/12/19a62eff.jpg?height=200p&trim=2,2,2,2',
+]
+toys = [
+    'Toys',
+    'https://rare-gallery.com/uploads/posts/4577090-indiana-jones-lego-motorcycle-water.jpg',
+]
+
 ## listing categories
 def categories(request):
-    # available categories and there required data
-    cars = [
-        'Cars',
-        'https://researchleap.com/wp-content/uploads/2015/12/5.-luxury-cars-in-china.jpg',
-    ]
-    technology = [
-        'Technology',
-        'https://www.deccanherald.com/sites/dh/files/styles/article_detail/public/articleimages/2023/01/23/scienceistock-1183792-1674473443.jpg?itok=bc45v91O',
-    ]
-    education = [
-        'Education',
-        'https://media.istockphoto.com/id/1320882544/photo/glowing-light-bulb-and-book-or-text-book-with-futuristic-icon-self-learning-or-education.jpg?s=612x612&w=0&k=20&c=1fCGnLilpVhM1rw2DKgtTcujYezmelfPFYPB4dyhuuk=',
-    ]
-    home = [
-        'Home',
-        'https://cdn.homedit.com/wp-content/uploads/2011/02/decorate-the-bookshelf-with-diff-books.jpg',
-    ]
-    art = [
-        'Art',
-        'https://imgv3.fotor.com/images/slider-image/goart_guide_pc_now_3.jpg',
-    ]
-    gaming = [
-        'Gaming',
-        'https://www.reviewgeek.com/p/uploads/2020/12/19a62eff.jpg?height=200p&trim=2,2,2,2',
-    ]
-    toys = [
-        'Toys',
-        'https://rare-gallery.com/uploads/posts/4577090-indiana-jones-lego-motorcycle-water.jpg',
-    ]
-    
 
     # categories
     categories = [
@@ -384,8 +386,24 @@ def categories(request):
     })
 
 
+
 ## displaying category's listings
-def category_listings(request, category_name, category_img):
+def category_listings(request, category_name):
+
+    # categories
+    categories = {
+        "Cars": cars,
+        "Technology": technology,
+        "Education": education,
+        "Home": home,
+        "Art": art,
+        "Gaming": gaming,
+        "Toys": toys,
+    }
+
+    # getting the category's image
+    category = categories[category_name]
+    category_img = category[1]
     
     # get listings present in the specific category
     all_listings = AuctionListing.objects.filter(category=category_name)
@@ -398,11 +416,10 @@ def category_listings(request, category_name, category_img):
             original_listing
         ]
         listings.append(listing)
+        items += 1
         
     if items == 0:
         listings = ""
-
-    print(f"{listings}")
 
     # render an html page showing all listings in the category
     return render(request, "auctions/category_listings.html", {
