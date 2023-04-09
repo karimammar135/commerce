@@ -188,6 +188,7 @@
                             <span class="number">12</span>
                             <span class="sign">-</span>
                         </div>
+
                         <div class="right-container">
                             <!-- head -->
                             <div class="head">
@@ -199,16 +200,33 @@
                                 </div>
 
                                 <!-- reply -->
-                                <div class="reply-container">
+                                <a class="reply-container" href="javascript:document.getElementById('add_comment').focus()">
                                     <i class="fa-solid fa-reply"></i>
                                     <span>Reply</span>
-                                </div>
+                                </a>
 
                             </div>
                             <!-- end of head -->
 
                             <!-- the actual comment itself -->
                             <p>{{ comment.comment }}</p>
+
+                            <!-- if the user is the author of the comment give him the ability to delete it -->
+                            {% if comment.author == current_user %}
+                                <form class="delete_comment" method="post" action="{% url 'listing_details' listing.id %}">
+                                    {% csrf_token %}
+
+                                    <!-- comment id -->
+                                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+
+                                    <!-- form name -->
+                                    <input type="hidden" name="form_name" value="delete_comment"> 
+
+                                    <!-- submit button -->
+                                    <input class="delete_comment_btn btn btn-outline-danger" type="submit" value="delete">
+
+                                </form>
+                            {% endif %}
                         
                         </div>
                     </div>

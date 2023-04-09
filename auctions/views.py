@@ -245,6 +245,23 @@ def listing_details(request, id):
     
 
 
+    ## delete a comment
+    elif request.POST.get("form_name") == "delete_comment":
+
+        # get comment id
+        comment_id = request.POST["comment_id"]
+
+        # get the specific comment from the database
+        comment = Comment.objects.get(id=comment_id)
+
+        # delete the comment 
+        comment.delete()
+
+        # redirect the user to a page that displays all active listings 
+        listing = AuctionListing.objects.get(id = id)
+        return HttpResponseRedirect(reverse("listing_details", args=(listing.id,)))
+
+
 
     ## if close auction form submitted using post method
     elif request.POST.get("form_name") == "close_auction":
@@ -333,7 +350,6 @@ def listing_details(request, id):
             "current_user": current_user,
             "watchlist": watchlist
         })
-
 
 
 

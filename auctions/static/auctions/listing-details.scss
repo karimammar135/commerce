@@ -487,6 +487,7 @@
                         align-self: flex-end;
                         margin: 0 25px 0 25px;
                         min-width: 65px;
+                        text-decoration: none;
                         i {
                             color: #5357B6;
                             font-size: small;
@@ -500,6 +501,7 @@
                         }
                     }
                     /* end of reply */
+
                 }
                 /* end of head */
                 
@@ -511,6 +513,22 @@
 
     }
     /* end of low container */
+
+/* delete comment form */
+.delete_comment {
+    display: flex;
+    justify-content: flex-end;
+    width: 96%;
+
+    /* delete comment btn */
+    .delete_comment_btn {
+        height: 15px;
+        width: 70px;
+        font-size: 15px;
+        padding-bottom: 30px;
+    }
+}
+/* end of delete comment form */
 
 /* middle bar in comments section */
 .middle-bar {
