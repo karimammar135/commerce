@@ -54,9 +54,10 @@ class Comment(models.Model):
     listing = models.ForeignKey(AuctionListing, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"author: {self.author}, comment: {self.comment}, listing: {self.listing.id}"
+        return f"author: {self.author}, comment: {self.comment}, listing: {self.listing.id}, created_on: {self.created_on}"
 
 
 # Watchlist table

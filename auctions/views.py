@@ -9,6 +9,8 @@ from .models import User, AuctionListing, Bid, Comment, Watchlist
 
 from django.contrib import messages #import messages
 
+from datetime import datetime
+
 # returning index(main) page
 def index(request):
 
@@ -22,7 +24,6 @@ def index(request):
             exit
         else:
             listings.append(listing)
-    print(f"{listings}")
 
     return render(request, "auctions/index.html", {
         "listings": listings
@@ -217,7 +218,6 @@ def listing_details(request, id):
             return HttpResponseRedirect(reverse("active_listings"))
             
         else:
-            print("you have to give a larger bid")
             # redirect the user to the page that displays all active listings 
             return render(request, "auctions/error.html", {
                 "error": "Your bid was not submitted successfuly. You have to provide a larger bid."
@@ -323,7 +323,44 @@ def listing_details(request, id):
         # get the specific auction listing and the comments made on it
         listing = AuctionListing.objects.get(id = id)
         comments = listing.comments.all()
+        
+        # calculate the time between the date of creation and the current date of the comments
+        comments_times = {}
+        for comment in comments:
+            # creation date
+            creation_date = str(comment.created_on)[:10]
 
+            # current date
+            current_date = str(datetime.now())[:10]
+
+            # convert the d\string dates into date objects
+            d1 = datetime.strptime(creation_date, "%Y-%m-%d")
+            d2 = datetime.strptime(current_date, "%Y-%m-%d")
+
+            # difference between the two dates in timedelta
+            delta = d2 - d1
+            comment_time = ""
+           
+            # possible time values
+            if delta.days == 0:
+                comment_time = "just now"
+            elif (delta.days/30) > 1:
+                if int(delta.days/30) > 12:
+                    if int((int(delta.days)/30)/12) == 1:
+                        comment_time = "1 year ago"
+                    else:
+                        comment_time = f"{int((int(delta.days)/30)/12)} years ago"
+                else:
+                    comment_time = f"{int(delta.days/30)} month ago"
+            elif delta.days == 1:
+                comment_time = f"{delta.days} day ago"
+            else: 
+                comment_time = f"{delta.days} days ago"
+            
+            # add the comment time to the dictionary
+            comments_times.update({comment.id: comment_time})
+        
+        
         # calculating the number of comments comments
         total_comments = 0
         for comment in comments:
@@ -346,6 +383,7 @@ def listing_details(request, id):
         return render(request, "auctions/listing_details.html", {
             "listing": listing,
             "comments": comments,
+            "comments_times": comments_times,
             "total_comments": total_comments,
             "current_user": current_user,
             "watchlist": watchlist

@@ -196,7 +196,12 @@
                                 <div class="profile">
                                     <img src="{% static 'auctions/media/profile.png' %}" rel="icon">
                                     <span class="username">{{ comment.author }}</span>
-                                    <span class="date">1 month ago</span>
+                                    {% for key, value in comments_times.items %}
+                                        {% if key == comment.id %}
+                                            <span class="date">{{ value }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                    
                                 </div>
 
                                 <!-- reply -->
